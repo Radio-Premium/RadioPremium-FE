@@ -6,7 +6,7 @@ const ChannelListItem = ({
   thumbnail,
   channelName,
   isFavoriteChannel,
-  onToggleInterest,
+  onToggleFavorite,
 }) => {
   return (
     <li className="my-2 flex h-16 w-[352px] items-center rounded-md bg-gray-100 p-2">
@@ -15,7 +15,7 @@ const ChannelListItem = ({
         <>
           <p className="ml-3 w-3/5 text-sm font-bold">{channelName}</p>
           <div className="flex">
-            <button onClick={onToggleInterest}>
+            <button onClick={onToggleFavorite}>
               <FilledStar className="mr-1 mb-0.5 ml-2" />
             </button>
             <button>
@@ -26,7 +26,7 @@ const ChannelListItem = ({
       ) : (
         <>
           <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
-          <button onClick={onToggleInterest}>
+          <button onClick={onToggleFavorite}>
             <BlankStar className="mx-3 ml-auto" />
           </button>
         </>
