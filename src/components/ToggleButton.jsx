@@ -10,7 +10,7 @@ const ToggleButton = () => {
   return (
     <>
       <button
-        className={`relative h-9 w-17 rounded-full transition-colors duration-200 ${
+        className={`relative h-9 w-17 cursor-pointer rounded-full transition-colors duration-200 ${
           isActive ? "bg-black" : "bg-neutral-300"
         }`}
         onClick={handleToggle}
