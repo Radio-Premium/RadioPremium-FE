@@ -10,17 +10,17 @@ const TabBar = () => {
 
   return (
     <div className="mt-5 flex bg-white px-4 text-black">
-      {tabItems.map((tabItem) => (
+      {tabItems.map(({ key, label }) => (
         <div
-          key={tabItem.key}
+          key={key}
           className="w-full cursor-pointer text-center text-xl font-bold"
-          onClick={() => setActiveTab(tabItem.key)}
+          onClick={() => setActiveTab(key)}
           style={{
-            color: activeTab === tabItem.key ? "black" : "gray",
+            color: activeTab === key ? "black" : "gray",
           }}
         >
-          {tabItem.label}
-          {activeTab === tabItem.key && (
+          {label}
+          {activeTab === key && (
             <div className="left-0 mt-3 h-1 rounded-[10px] bg-black" />
           )}
         </div>
