@@ -13,7 +13,7 @@ const TabBar = () => {
       {tabItems.map((tabItem) => (
         <div
           key={tabItem.key}
-          className="relative w-full cursor-pointer text-center text-xl font-bold"
+          className="w-full cursor-pointer text-center text-xl font-bold"
           onClick={() => setActiveTab(tabItem.key)}
           style={{
             color: activeTab === tabItem.key ? "black" : "gray",
@@ -21,17 +21,7 @@ const TabBar = () => {
         >
           {tabItem.label}
           {activeTab === tabItem.key && (
-            <div
-              style={{
-                position: "absolute",
-                marginTop: "10px",
-                left: "0",
-                width: "100%",
-                height: "5px",
-                backgroundColor: "black",
-                borderRadius: "10px",
-              }}
-            />
+            <div className="left-0 mt-3 h-1 rounded-[10px] bg-black" />
           )}
         </div>
       ))}
