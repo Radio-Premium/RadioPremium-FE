@@ -14,8 +14,9 @@ const ToggleCheckbox = ({
       {isSelected && (
         <div>
           <div className="mt-1 ml-5 flex flex-col gap-1">
-            <Checkbox>{childrenOptions[0]}</Checkbox>
-            <Checkbox>{childrenOptions[1]}</Checkbox>
+            {childrenOptions.map(({ id, label }) => (
+              <Checkbox key={id}>{label}</Checkbox>
+            ))}
           </div>
         </div>
       )}
