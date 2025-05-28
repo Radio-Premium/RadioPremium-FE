@@ -2,7 +2,7 @@
 name: 버그 리포트
 about: 버그를 신고하기 위한 템플릿입니다.
 title: ""
-labels: bug
+labels: 🐞bug
 assignees: ""
 ---
 
