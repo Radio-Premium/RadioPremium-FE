@@ -12,7 +12,7 @@ const MiniPlayer = ({ thumbnail, channelName, closePlayer }) => {
   };
 
   return (
-    <div className="flex h-20 w-[390px] justify-between rounded-b-4xl bg-white px-4 shadow-[0_-6px_9px_rgba(0,0,0,0.3)]">
+    <div className="flex h-20 w-full justify-between rounded-b-4xl bg-white px-4 shadow-[0_-6px_9px_rgba(0,0,0,0.3)]">
       <div className="flex items-center">
         <img
           className="ml-2 h-16 w-16"
