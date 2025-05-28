@@ -26,12 +26,17 @@ const AD_REPORT_OPTIONS = {
   },
 };
 
-const AdReportModal = () => {
+const AdReportModal = ({ isChangeChannel }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const handleSelect = (option) => {
     setSelectedOption((prev) => (prev === option ? null : option));
   };
+
+  const optionsToRender = Object.entries(AD_REPORT_OPTIONS).filter(([key]) => {
+    if (!isChangeChannel) return true;
+    return key === AD_REPORT_TYPES.AD;
+  });
 
   return (
     <Modal
@@ -39,17 +44,15 @@ const AdReportModal = () => {
       subTitle="광고일 경우, 채널을 변경할 수 있습니다."
     >
       <div>
-        {Object.entries(AD_REPORT_OPTIONS).map(
-          ([key, { parentOption, childrenOptions }]) => (
-            <ToggleCheckbox
-              key={key}
-              isSelected={selectedOption === key}
-              onSelect={() => handleSelect(key)}
-              parentOption={parentOption}
-              childrenOptions={childrenOptions}
-            />
-          )
-        )}
+        {optionsToRender.map(([key, { parentOption, childrenOptions }]) => (
+          <ToggleCheckbox
+            key={key}
+            isSelected={selectedOption === key}
+            onSelect={() => handleSelect(key)}
+            parentOption={parentOption}
+            childrenOptions={childrenOptions}
+          />
+        ))}
       </div>
       <div className="mt-[20px] flex justify-end gap-x-2">
         <Button className="flex h-[35px] w-[75px] items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-[16px] text-black hover:bg-gray-100">
