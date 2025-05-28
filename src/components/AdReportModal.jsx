@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import ToggleCheckbox from "./ToggleCheckbox";
+import Button from "./ui/Button";
 import Modal from "./ui/modal";
 
 const AD_REPORT_TYPES = {
@@ -44,9 +45,13 @@ const AdReportModal = () => {
           )
         )}
       </div>
-      <div>
-        <button className="">취소</button>
-        <button className="">확인</button>
+      <div className="flex justify-end gap-x-2">
+        <Button className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm text-black hover:bg-gray-100">
+          취소
+        </Button>
+        <Button className="rounded-md bg-[#5B4DFF] px-4 py-2 text-sm text-white hover:bg-[#4F46E5]">
+          확인
+        </Button>
       </div>
     </Modal>
   );
