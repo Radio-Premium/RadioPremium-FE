@@ -7,10 +7,10 @@ const Modal = ({ children, title, subTitle }) => {
         <div className="pb-2">
           <WarningIcon className="mx-auto my-0" />
         </div>
-        <div>
+        <>
           <p className="text-center text-lg text-black">{title}</p>
           <p className="text-center text-sm text-[#888888]">{subTitle}</p>
-        </div>
+        </>
         {children}
       </div>
     </div>

@@ -12,12 +12,10 @@ const ToggleCheckbox = ({
         {parentOption}
       </Checkbox>
       {isSelected && (
-        <div>
-          <div className="mt-1 ml-5 flex flex-col gap-1">
-            {childrenOptions.map(({ id, label }) => (
-              <Checkbox key={id}>{label}</Checkbox>
-            ))}
-          </div>
+        <div className="mt-1 ml-5 flex flex-col gap-1">
+          {childrenOptions.map(({ id, label }) => (
+            <Checkbox key={id}>{label}</Checkbox>
+          ))}
         </div>
       )}
     </>
