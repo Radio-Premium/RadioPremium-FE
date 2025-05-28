@@ -10,7 +10,11 @@ const ChannelListItem = ({
 }) => {
   return (
     <li className="my-2 flex h-16 w-[352px] items-center rounded-md bg-gray-100 p-2">
-      <img className="h-12 w-12" src={thumbnail} />
+      <img
+        className="h-12 w-12"
+        src={thumbnail}
+        alt={`${channelName} 썸네일`}
+      />
       {isFavoriteChannel ? (
         <>
           <p className="ml-3 w-3/5 text-sm font-bold">{channelName}</p>
