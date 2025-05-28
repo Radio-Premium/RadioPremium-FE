@@ -13,8 +13,10 @@ const ToggleCheckbox = ({
       </Checkbox>
       {isSelected && (
         <div>
-          <Checkbox>{childrenOptions[0]}</Checkbox>
-          <Checkbox>{childrenOptions[1]}</Checkbox>
+          <div className="mt-1 ml-5 flex flex-col gap-1">
+            <Checkbox>{childrenOptions[0]}</Checkbox>
+            <Checkbox>{childrenOptions[1]}</Checkbox>
+          </div>
         </div>
       )}
     </>
