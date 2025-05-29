@@ -13,11 +13,14 @@ const NotFound = () => {
       <h1 className="mt-5 flex items-center justify-center text-xl font-black">
         페이지를 <span className="ml-2 text-yellow-400"> 찾을 수 없습니다</span>
       </h1>
-      <p className="mt-6 flex items-center justify-center text-sm font-medium text-neutral-500">
-        요청하신 페이지가 제거되었거나, <br />
-        일시적으로 사용이 중단되었습니다. <br />
-        이용에 불편을 드려 죄송합니다.
-      </p>
+      <div className="mt-6 text-center text-sm font-medium text-neutral-500">
+        <p>
+          요청하신 페이지가 제거되었거나,
+          <br />
+          일시적으로 사용이 중단되었습니다.
+        </p>
+        <p>이용에 불편을 드려 죄송합니다.</p>
+      </div>
       <hr className="mx-auto mt-6 w-[250px] border-neutral-400" />
       <div className="mt-5 flex justify-center">
         <button
