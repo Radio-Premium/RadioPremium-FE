@@ -6,6 +6,10 @@ import RadioPremiumLogo from "@/assets/svgs/radio-premium-logo.svg?react";
 const MainHeader = () => {
   const navigate = useNavigate();
 
+  const handleClick = () => {
+    navigate("/search-result");
+  };
+
   return (
     <div className="mt-8 ml-6 flex items-center justify-between">
       <div className="flex items-center">
@@ -14,7 +18,7 @@ const MainHeader = () => {
           onClick={() => navigate("/")}
         />
       </div>
-      <SearchBoldIcon className="mr-6 cursor-pointer" />
+      <SearchBoldIcon className="mr-6 cursor-pointer" onClick={handleClick} />
     </div>
   );
 };
