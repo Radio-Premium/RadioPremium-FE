@@ -23,20 +23,18 @@ const ToggleButton = ({ size = "m" }) => {
   const { buttonSize, thumbSize, activeTranslate } = toggleSize[size];
 
   return (
-    <>
-      <button
-        className={`relative cursor-pointer rounded-full transition-colors duration-200 ${
-          isToggled ? "bg-black" : "bg-neutral-300"
-        } ${buttonSize}`}
-        onClick={toggleSwitch}
-      >
-        <div
-          className={`absolute top-1 left-1 rounded-full bg-white duration-400 ${
-            isToggled ? activeTranslate : "translate-x-0"
-          } ${thumbSize}`}
-        />
-      </button>
-    </>
+    <button
+      className={`relative cursor-pointer rounded-full transition-colors duration-200 ${
+        isToggled ? "bg-black" : "bg-neutral-300"
+      } ${buttonSize}`}
+      onClick={toggleSwitch}
+    >
+      <div
+        className={`absolute top-1 left-1 rounded-full bg-white duration-400 ${
+          isToggled ? activeTranslate : "translate-x-0"
+        } ${thumbSize}`}
+      />
+    </button>
   );
 };
 
