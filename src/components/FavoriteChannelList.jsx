@@ -5,12 +5,16 @@ import {
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import FavoriteChannelListItem from "@/components/FavoriteChannelListItem";
 
 const FavoriteChannelList = ({ channelList }) => {
   const [favoriteChannelList, setFavoriteChannelList] = useState(channelList);
+
+  useEffect(() => {
+    setFavoriteChannelList(channelList);
+  }, [channelList]);
 
   const handleChannelDragEnd = (event) => {
     const { active, over } = event;
