@@ -11,7 +11,7 @@ const settingList = [
     ],
   },
   {
-    type: "isAdDetect",
+    type: "isReturnChannel",
     title: "기존 채널로 이동",
     explanations: ["이전 채널의 광고가 종료되면", "자동으로 복귀합니다."],
   },
