@@ -34,7 +34,7 @@ const ChannelPlayer = ({ isChannelChanged }) => {
         </p>
         <div className="mt-2 flex items-center gap-x-2">
           <p className="text-sm font-semibold sm:text-base">{buttonLabel}</p>
-          <ToggleButton />
+          <ToggleButton size="s" />
         </div>
 
         <Button className="mt-12" onClick={handlePlayPause}>
