@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import ToggleCheckbox from "./ToggleCheckbox";
-import Button from "./ui/Button";
-import Modal from "./ui/modal";
+import ToggleCheckbox from "@/components/ToggleCheckbox";
+import Button from "@/components/ui/Button";
+import Modal from "@/components/ui/modal";
 
 const AD_REPORT_TYPES = {
   AD: "ad",

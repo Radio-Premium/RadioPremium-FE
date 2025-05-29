@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import Checkbox from "./ui/Checkbox";
+import Checkbox from "@/components/ui/Checkbox";
 
 const ToggleCheckbox = ({
   isSelected,
