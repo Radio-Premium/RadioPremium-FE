@@ -9,7 +9,7 @@ const TabBar = () => {
   ];
 
   return (
-    <div className="mt-5 flex bg-white px-4 text-black">
+    <div className="mt-5 flex bg-white text-black">
       {tabItems.map(({ key, label }) => (
         <div
           key={key}
