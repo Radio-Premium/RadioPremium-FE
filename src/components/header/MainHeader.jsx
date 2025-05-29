@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SearchBoldIcon from "@/assets/svgs/icon-search-bold.svg?react";
 import RadioPremiumLogo from "@/assets/svgs/radio-premium-logo.svg?react";
 
-const Header = () => {
+const MainHeader = () => {
   const navigate = useNavigate();
 
   return (
@@ -19,4 +19,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default MainHeader;
