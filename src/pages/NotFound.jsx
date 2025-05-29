@@ -25,11 +25,9 @@ const NotFound = () => {
       <div className="mt-5 flex justify-center">
         <button
           className="flex cursor-pointer flex-col rounded-lg border-1 border-neutral-400 px-5 py-2 font-bold"
-          onClick={() => {
-            navigate(-1);
-          }}
+          onClick={() => navigate("/", { replace: true })}
         >
-          이전으로
+          홈으로 이동
         </button>
       </div>
     </>
