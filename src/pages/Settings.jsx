@@ -1,3 +1,4 @@
+import MainHeader from "@/components/header/MainHeader";
 import SettingListItem from "@/components/SettingListItem";
 import TabBar from "@/components/TabBar";
 
@@ -20,6 +21,7 @@ const settingList = [
 const Settings = () => {
   return (
     <>
+      <MainHeader showSearchIcon={false} />
       <TabBar />
       <div className="p-4">
         <ul>

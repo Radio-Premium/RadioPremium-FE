@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import SearchBoldIcon from "@/assets/svgs/icon-search-bold.svg?react";
 import RadioPremiumLogo from "@/assets/svgs/radio-premium-logo.svg?react";
 
-const MainHeader = () => {
+const MainHeader = ({ showSearchIcon = true }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -11,14 +11,19 @@ const MainHeader = () => {
   };
 
   return (
-    <div className="mt-8 ml-6 flex items-center justify-between">
+    <div className="mt-8 mb-8 ml-6 flex items-center justify-between">
       <div className="flex items-center">
         <RadioPremiumLogo
           className="cursor-pointer"
           onClick={() => navigate("/")}
         />
       </div>
-      <SearchBoldIcon className="mr-6 cursor-pointer" onClick={handleClick} />
+      {showSearchIcon && (
+        <SearchBoldIcon
+          className="mt-1 mr-6 cursor-pointer"
+          onClick={handleClick}
+        />
+      )}
     </div>
   );
 };
