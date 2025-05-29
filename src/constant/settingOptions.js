@@ -1,0 +1,9 @@
+export const SETTING_TYPES = {
+  AD_DETECT: "AD_DETECT",
+  RETURN_CHANNEL: "RETURN_CHANNEL",
+};
+
+export const SETTING_TITLES = {
+  [SETTING_TYPES.AD_DETECT]: "광고 감지",
+  [SETTING_TYPES.RETURN_CHANNEL]: "기존 채널로 이동",
+};
