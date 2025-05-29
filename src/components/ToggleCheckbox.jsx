@@ -11,8 +11,8 @@ const ToggleCheckbox = ({
   const [selectedChildId, setSelectedChildId] = useState(null);
 
   const handleParentClick = () => {
-    onSelect(); // 부모 선택 상태 변경
-    setSelectedChildId(null); // 자식 선택 초기화
+    onSelect();
+    setSelectedChildId(null);
   };
 
   const handleChildClick = (id) => {
@@ -24,7 +24,8 @@ const ToggleCheckbox = ({
       <Checkbox
         checked={isSelected}
         onChange={handleParentClick}
-        className="mt-[10px] text-[18px]"
+        labelClassName="mt-[10px] text-[18px]"
+        inputClassName="h-[20px] min-h-[20px] w-[20px] min-w-[20px]"
       >
         {parentOption}
       </Checkbox>
@@ -35,7 +36,8 @@ const ToggleCheckbox = ({
               key={id}
               checked={selectedChildId === id}
               onChange={() => handleChildClick(id)}
-              className="text-[16px]"
+              labelClassName="text-[16px]"
+              inputClassName="h-[18px] min-h-[18px] w-[18px] min-w-[18px] "
             >
               {label}
             </Checkbox>
