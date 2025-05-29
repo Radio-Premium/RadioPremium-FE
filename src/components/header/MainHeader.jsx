@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
+import RadioPremiumLogo from "@/assets/svgs/icon-radio-premium-logo.svg?react";
 import SearchBoldIcon from "@/assets/svgs/icon-search-bold.svg?react";
-import RadioPremiumLogo from "@/assets/svgs/radio-premium-logo.svg?react";
 
 const MainHeader = ({ showSearchIcon = true }) => {
   const navigate = useNavigate();
@@ -13,10 +13,9 @@ const MainHeader = ({ showSearchIcon = true }) => {
   return (
     <div className="mt-8 mb-8 ml-6 flex items-center justify-between">
       <div className="flex items-center">
-        <RadioPremiumLogo
-          className="cursor-pointer"
-          onClick={() => navigate("/")}
-        />
+        <button className="cursor-pointer" onClick={() => navigate("/")}>
+          <RadioPremiumLogo />
+        </button>
       </div>
       {showSearchIcon && (
         <SearchBoldIcon
