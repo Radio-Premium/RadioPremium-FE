@@ -5,7 +5,6 @@ import SearchThinIcon from "@/assets/svgs/icon-search-thin.svg?react";
 
 const RadioSearchInput = () => {
   const navigate = useNavigate();
-
   const [isInputClicked, setIsInputClicked] = useState(false);
 
   return (
