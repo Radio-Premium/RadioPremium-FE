@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <>
       <div className="flex items-center justify-center">
-        <IconWarning className="mt-30 h-20 w-20" />
+        <IconWarning className="mt-50 h-20 w-20" />
       </div>
       <h1 className="mt-5 flex items-center justify-center text-xl font-black">
         페이지를 <span className="ml-2 text-yellow-400"> 찾을 수 없습니다</span>
