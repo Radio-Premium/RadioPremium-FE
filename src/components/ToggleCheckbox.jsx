@@ -15,7 +15,7 @@ const ToggleCheckbox = ({
     setSelectedChildId(null);
   };
 
-  const handleChildClick = (id) => {
+  const toggleChildOption = (id) => {
     setSelectedChildId((prev) => (prev === id ? null : id));
   };
 
@@ -35,7 +35,7 @@ const ToggleCheckbox = ({
             <Checkbox
               key={id}
               checked={selectedChildId === id}
-              onChange={() => handleChildClick(id)}
+              onChange={() => toggleChildOption(id)}
               labelClassName="text-[16px]"
               inputClassName="h-[18px] min-h-[18px] w-[18px] min-w-[18px] "
             >

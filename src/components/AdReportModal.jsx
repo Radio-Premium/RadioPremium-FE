@@ -6,7 +6,7 @@ import Modal from "./ui/modal";
 
 const AD_REPORT_TYPES = {
   AD: "ad",
-  NOT_AD: "notAd",
+  NOT_AD: "not-ad",
 };
 
 const AD_REPORT_OPTIONS = {
@@ -26,19 +26,22 @@ const AD_REPORT_OPTIONS = {
   },
 };
 
-const AdReportModal = ({ isChangeChannel }) => {
+const AdReportModal = ({ isChannelChanged }) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
-  const handleSelect = (option) => {
+  const availableReportOptions = Object.entries(AD_REPORT_OPTIONS).filter(
+    ([key]) => {
+      if (!isChannelChanged) {
+        return true;
+      }
+
+      return key === AD_REPORT_TYPES.AD;
+    }
+  );
+  const baseMinHeight = isChannelChanged ? "min-h-[95px]" : "min-h-[130px]";
+  const toggleParentOption = (option) => {
     setSelectedOption((prev) => (prev === option ? null : option));
   };
-
-  const optionsToRender = Object.entries(AD_REPORT_OPTIONS).filter(([key]) => {
-    if (!isChangeChannel) return true;
-    return key === AD_REPORT_TYPES.AD;
-  });
-
-  const baseMinHeight = isChangeChannel ? "min-h-[95px]" : "min-h-[130px]";
 
   return (
     <Modal
@@ -46,15 +49,17 @@ const AdReportModal = ({ isChangeChannel }) => {
       subTitle="광고일 경우, 채널을 변경할 수 있습니다."
     >
       <div className={`flex w-[280px] flex-col items-start ${baseMinHeight}`}>
-        {optionsToRender.map(([key, { parentOption, childrenOptions }]) => (
-          <ToggleCheckbox
-            key={key}
-            isSelected={selectedOption === key}
-            onSelect={() => handleSelect(key)}
-            parentOption={parentOption}
-            childrenOptions={childrenOptions}
-          />
-        ))}
+        {availableReportOptions.map(
+          ([key, { parentOption, childrenOptions }]) => (
+            <ToggleCheckbox
+              key={key}
+              isSelected={selectedOption === key}
+              onSelect={() => toggleParentOption(key)}
+              parentOption={parentOption}
+              childrenOptions={childrenOptions}
+            />
+          )
+        )}
       </div>
       <div className="mt-[20px] flex w-full justify-end gap-x-2">
         <Button className="flex h-[35px] w-[75px] items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-[16px] text-black hover:bg-gray-100">
