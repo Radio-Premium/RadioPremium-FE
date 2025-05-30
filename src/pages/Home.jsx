@@ -9,7 +9,6 @@ const Home = () => {
 
   return (
     <>
-      <div className="h-12 w-full" />
       <TabBar />
       <div className="px-4 pt-8">
         <ChannelSection title="Favorite Channel">
