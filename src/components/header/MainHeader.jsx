@@ -11,7 +11,7 @@ const MainHeader = ({ showSearchIcon = true }) => {
   };
 
   return (
-    <div className="mt-8 mb-8 ml-6 flex items-center justify-between">
+    <div className="flex items-center justify-between pt-8 pb-8 pl-6">
       <div className="flex items-center">
         <button className="cursor-pointer" onClick={() => navigate("/")}>
           <RadioPremiumLogo />
