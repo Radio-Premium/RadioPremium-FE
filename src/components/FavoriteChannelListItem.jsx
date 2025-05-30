@@ -28,7 +28,9 @@ const FavoriteChannelListItem = ({ id, name }) => {
       className="my-2 flex h-16 w-full items-center rounded-md bg-gray-100 p-2 select-none"
     >
       <div className="h-12 w-12 flex-none rounded-lg bg-gray-200" />
-      <p className="ml-3 w-3/5 flex-1 text-sm font-bold">{name}</p>
+      <p className="ml-3 w-3/5 flex-1 truncate overflow-hidden text-sm font-bold whitespace-nowrap">
+        {name}
+      </p>
       <div className="flex flex-1 justify-end pr-2">
         <button>
           <FilledStarIcon className="mr-1 mb-0.5 ml-2" />
