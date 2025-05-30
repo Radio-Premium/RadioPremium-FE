@@ -4,7 +4,7 @@ import MainPauseIcon from "@/assets/svgs/icon-main-pause.svg?react";
 import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
-import { SETTING_TYPES, SETTING_TITLES } from "@/constant/settingOptions";
+import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   // 데이터 연결 전 임시 값 할당
