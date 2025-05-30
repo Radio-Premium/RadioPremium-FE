@@ -19,10 +19,6 @@ const Header = () => {
     return <ReportHeader />;
   }
 
-  if (pathname === "/settings") {
-    return <MainHeader showSearchIcon={false} />;
-  }
-
   return <MainHeader showSearchIcon={false} />;
 };
 
