@@ -1,4 +1,4 @@
-import ToggleButton from "@/components/ToggleButton";
+import ToggleButton from "@/components/ui/ToggleButton";
 
 const SettingListItem = ({ title, explanations }) => {
   return (

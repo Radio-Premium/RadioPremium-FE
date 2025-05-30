@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import MainPauseIcon from "@/assets/svgs/icon-main-pause.svg?react";
 import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
-import ToggleButton from "@/components/ToggleButton";
 import Button from "@/components/ui/Button";
+import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TYPES, SETTING_TITLES } from "@/constant/settingOptions";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
