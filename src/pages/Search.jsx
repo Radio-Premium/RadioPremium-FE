@@ -3,12 +3,9 @@ import RadioSearchInput from "@/components/header/RadioSearchInput";
 
 const Search = () => {
   return (
-    <>
-      <RadioSearchInput />
-      <div className="mt-8">
-        <ChannelListItem />
-      </div>
-    </>
+    <div className="mt-8">
+      <ChannelListItem />
+    </div>
   );
 };
 
