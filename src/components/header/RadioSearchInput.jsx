@@ -16,7 +16,7 @@ const RadioSearchInput = () => {
             onFocus={() => setIsInputClicked(true)}
             onBlur={() => setIsInputClicked(false)}
             type="text"
-            placeholder={isInputClicked ? " " : "Search by radio name"}
+            placeholder={!isInputClicked && "Search by radio name"}
             className="w-full text-sm font-semibold text-neutral-800 outline-none"
           />
         </div>
