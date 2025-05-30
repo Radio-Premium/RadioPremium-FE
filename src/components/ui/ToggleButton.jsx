@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Button from "@/components/ui/Button";
+
 const toggleSize = {
   s: {
     buttonSize: "h-6 w-12",
