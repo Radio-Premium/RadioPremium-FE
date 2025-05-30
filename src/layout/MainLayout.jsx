@@ -5,7 +5,7 @@ import Header from "@/components/header";
 const MainLayout = () => {
   return (
     <div className="flex justify-center bg-purple-50">
-      <div className="relative min-h-screen w-full max-w-[480px] bg-white shadow-lg">
+      <div className="relative min-h-dvh w-full max-w-[480px] bg-white shadow-lg">
         <Header />
         <main>
           <Outlet />
