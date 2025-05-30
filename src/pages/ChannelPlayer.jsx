@@ -11,7 +11,7 @@ const ChannelPlayer = ({ isChannelChanged }) => {
   const logoUrl =
     "https://www.urbanbrush.net/web/wp-content/uploads/edd/2019/08/urbanbrush-20190805082332272597.png";
   const channelTitle = "RDO 라디오방송";
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
