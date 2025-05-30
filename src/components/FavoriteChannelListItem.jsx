@@ -7,6 +7,7 @@ import FilledStarIcon from "@/assets/svgs/icon-filled-star.svg?react";
 const FavoriteChannelListItem = ({ id, name }) => {
   const {
     attributes,
+    isDragging,
     listeners,
     setNodeRef,
     setActivatorNodeRef,
@@ -32,7 +33,13 @@ const FavoriteChannelListItem = ({ id, name }) => {
         <button>
           <FilledStarIcon className="mr-1 mb-0.5 ml-2" />
         </button>
-        <button ref={setActivatorNodeRef} className="touch-none" {...listeners}>
+        <button
+          ref={setActivatorNodeRef}
+          className={`touch-none ${
+            isDragging ? "cursor-grabbing" : "cursor-grab"
+          }`}
+          {...listeners}
+        >
           <DragDropIcon className="ml-3" />
         </button>
       </div>
