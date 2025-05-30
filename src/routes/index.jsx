@@ -1,8 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "@/layout/MainLayout";
+import ChannelPlayer from "@/pages/ChannelPlayer";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
+import Search from "@/pages/Search";
 import Settings from "@/pages/Settings";
 
 const router = createBrowserRouter([
@@ -11,6 +13,8 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "", element: <Home /> },
+      { path: "search-result", element: <Search /> },
+      { path: "channel/:id", element: <ChannelPlayer /> },
       { path: "settings", element: <Settings /> },
     ],
   },
