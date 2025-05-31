@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import CloseIcon from "@/assets/svgs/CloseIcon.svg?react";
-import PauseIcon from "@/assets/svgs/PauseIcon.svg?react";
-import PlayIcon from "@/assets/svgs/PlayIcon.svg?react";
+import CloseIcon from "@/assets/svgs/icon-close.svg?react";
+import PauseIcon from "@/assets/svgs/icon-mini-pause.svg?react";
+import PlayIcon from "@/assets/svgs/icon-mini-player.svg?react";
 
 const MiniPlayer = ({ thumbnail, channelName, closePlayer }) => {
   const [isPlaying, setIsPlaying] = useState(false);
