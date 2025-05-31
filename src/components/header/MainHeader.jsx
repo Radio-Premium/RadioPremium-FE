@@ -11,7 +11,7 @@ const MainHeader = ({ showSearchIcon = true }) => {
   };
 
   return (
-    <div className="flex items-center justify-between pt-8 pb-8 pl-6">
+    <div className="flex items-center justify-between pt-6 pb-3 pl-5">
       <div className="flex items-center">
         <button className="cursor-pointer" onClick={() => navigate("/")}>
           <RadioPremiumLogo />
@@ -19,7 +19,7 @@ const MainHeader = ({ showSearchIcon = true }) => {
       </div>
       {showSearchIcon && (
         <SearchBoldIcon
-          className="mt-1 mr-6 cursor-pointer"
+          className="mt-1 mr-4 cursor-pointer"
           onClick={handleClick}
         />
       )}

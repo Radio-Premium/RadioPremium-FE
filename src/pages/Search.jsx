@@ -1,5 +1,4 @@
 import ChannelListItem from "@/components/ChannelListItem";
-import RadioSearchInput from "@/components/header/RadioSearchInput";
 
 const Search = () => {
   return (
