@@ -8,9 +8,11 @@ const Modal = ({ children, title, subTitle }) => {
           <WarningIcon className="mx-auto h-[45px] w-[45px]" />
         </div>
         <div className="flex w-full flex-col items-center">
-          <div className="w-[300px] text-center">
+          <div className="w-[330px] text-center">
             <p className="text-[20px] font-bold text-black">{title}</p>
-            <p className="text-center text-[16px] text-[#888888]">{subTitle}</p>
+            <p className="mb-3 text-center text-[16px] text-[#888888]">
+              {subTitle}
+            </p>
           </div>
           {children}
         </div>

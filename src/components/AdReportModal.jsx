@@ -48,7 +48,7 @@ const AdReportModal = ({ isChannelChanged }) => {
       title="현재 방송이 광고인지 선택해주세요."
       subTitle="광고일 경우, 채널을 변경할 수 있습니다."
     >
-      <div className={`flex w-[280px] flex-col items-start ${baseMinHeight}`}>
+      <div className={`flex w-[320px] flex-col items-start ${baseMinHeight}`}>
         {availableReportOptions.map(
           ([key, { parentOption, childrenOptions }]) => (
             <ToggleCheckbox
