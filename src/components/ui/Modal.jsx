@@ -1,20 +1,19 @@
 import WarningIcon from "@/assets/svgs/icon-warning-red.svg?react";
 
-const Modal = ({ children, title, subTitle }) => {
+const Modal = ({ title, subTitle, children }) => {
   return (
-    <div className="fixed inset-0 z-500 bg-white/30 backdrop-blur-sm">
-      <div className="absolute top-[50%] left-[50%] z-600 w-[90vw] max-w-md min-w-[340px] translate-x-[-50%] translate-y-[-50%] rounded-xl bg-white p-4 px-[25px] py-[20px] shadow-lg">
-        <div className="pb-[10px]">
-          <WarningIcon className="mx-auto h-[45px] w-[45px]" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
+      <div className="w-full max-w-[360px] rounded-xl bg-white px-5 py-6 shadow-lg sm:max-w-[420px]">
+        <div className="pb-2">
+          <WarningIcon className="mx-auto h-11 w-11" />
         </div>
-        <div className="flex w-full flex-col items-center">
-          <div className="w-[330px] text-center">
-            <p className="text-[20px] font-bold text-black">{title}</p>
-            <p className="mb-3 text-center text-[16px] text-[#888888]">
-              {subTitle}
-            </p>
+
+        <div className="w-full text-center">
+          <div className="w-full text-center">
+            <p className="text-[18px] font-bold text-black">{title}</p>
+            <p className="mt-1 mb-3 text-[14px] text-gray-400">{subTitle}</p>
           </div>
-          {children}
+          <div className="w-full">{children}</div>
         </div>
       </div>
     </div>
