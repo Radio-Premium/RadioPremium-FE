@@ -25,7 +25,7 @@ const TabBar = () => {
           >
             {label}
             {isActive && (
-              <div className="left-0 mt-3 h-1 rounded-[10px] bg-black" />
+              <div className="left-0 mt-3 h-1 rounded-xl bg-black" />
             )}
           </div>
         );
