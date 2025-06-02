@@ -1,30 +1,30 @@
-import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const TabBar = () => {
-  const [activeTab, setActiveTab] = useState("home");
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const tabItems = [
-    { key: "home", label: "Home" },
-    { key: "setting", label: "Setting" },
+    { label: "Home", path: "/" },
+    { label: "Setting", path: "/settings" },
   ];
 
   return (
     <div className="mt-5 flex bg-white text-black">
-      {tabItems.map(({ key, label }) => (
-        <div
-          key={key}
-          className="w-full cursor-pointer text-center text-xl font-bold"
-          onClick={() => setActiveTab(key)}
-          style={{
-            color: activeTab === key ? "black" : "gray",
-          }}
-        >
-          {label}
-          {activeTab === key && (
-            <div className="left-0 mt-3 h-1 rounded-[10px] bg-black" />
-          )}
-        </div>
-      ))}
+      {tabItems.map(({ label, path }) => {
+        const isActive = location.pathname === path;
+
+        return (
+          <div
+            key={label}
+            className={`w-full cursor-pointer text-center text-xl font-bold ${isActive ? "text-black" : "text-neutral-400"}`}
+            onClick={() => navigate(path)}
+          >
+            {label}
+            {isActive && <div className="mt-3 h-1 rounded-xl bg-black" />}
+          </div>
+        );
+      })}
     </div>
   );
 };
