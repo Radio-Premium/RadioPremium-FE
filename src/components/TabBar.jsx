@@ -17,11 +17,8 @@ const TabBar = () => {
         return (
           <div
             key={label}
-            className="w-full cursor-pointer text-center text-xl font-bold"
+            className={`w-full cursor-pointer text-center text-xl font-bold ${isActive ? "text-black" : "text-neutral-400"}`}
             onClick={() => navigate(path)}
-            style={{
-              color: isActive ? "black" : "gray",
-            }}
           >
             {label}
             {isActive && <div className="mt-3 h-1 rounded-xl bg-black" />}
