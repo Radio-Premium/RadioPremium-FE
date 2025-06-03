@@ -38,7 +38,6 @@ const AdReportModal = ({ isChannelChanged }) => {
       return key === AD_REPORT_TYPES.AD;
     }
   );
-  const baseMinHeight = isChannelChanged ? "min-h-[95px]" : "min-h-[130px]";
   const toggleParentOption = (option) => {
     setSelectedOption((prev) => (prev === option ? null : option));
   };
@@ -48,20 +47,22 @@ const AdReportModal = ({ isChannelChanged }) => {
       title="현재 방송이 광고인지 선택해주세요."
       subTitle="광고일 경우, 채널을 변경할 수 있습니다."
     >
-      <div className={`flex w-[280px] flex-col items-start ${baseMinHeight}`}>
-        {availableReportOptions.map(
-          ([key, { parentOption, childrenOptions }]) => (
-            <ToggleCheckbox
-              key={key}
-              isSelected={selectedOption === key}
-              onSelect={() => toggleParentOption(key)}
-              parentOption={parentOption}
-              childrenOptions={childrenOptions}
-            />
-          )
-        )}
+      <div className="flex flex-col items-center">
+        <div className="w-[90%] max-w-[360px] text-left">
+          {availableReportOptions.map(
+            ([key, { parentOption, childrenOptions }]) => (
+              <ToggleCheckbox
+                key={key}
+                isSelected={selectedOption === key}
+                onSelect={() => toggleParentOption(key)}
+                parentOption={parentOption}
+                childrenOptions={childrenOptions}
+              />
+            )
+          )}
+        </div>
       </div>
-      <div className="mt-[20px] flex w-full justify-end gap-x-2">
+      <div className="mt-[25px] flex w-full justify-end gap-x-2">
         <Button className="flex h-[35px] w-[75px] items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-[16px] text-black hover:bg-gray-100">
           취소
         </Button>

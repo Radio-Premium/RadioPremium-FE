@@ -24,7 +24,7 @@ const ToggleCheckbox = ({
       <Checkbox
         checked={isSelected}
         onChange={handleParentClick}
-        labelClassName="mt-[10px] text-[18px]"
+        labelClassName="text-[16px] whitespace-nowrap"
         inputClassName="h-[20px] min-h-[20px] w-[20px] min-w-[20px]"
       >
         {parentOption}
@@ -36,8 +36,8 @@ const ToggleCheckbox = ({
               key={id}
               checked={selectedChildId === id}
               onChange={() => toggleChildOption(id)}
-              labelClassName="text-[16px]"
-              inputClassName="h-[18px] min-h-[18px] w-[18px] min-w-[18px] "
+              labelClassName="text-[16px] whitespace-nowrap"
+              inputClassName="h-[18px] min-h-[18px] w-[18px] min-w-[18px]"
             >
               {label}
             </Checkbox>

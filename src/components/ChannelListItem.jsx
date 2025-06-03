@@ -8,7 +8,7 @@ const ChannelListItem = ({
 }) => {
   return (
     <li
-      className={`my-2 flex h-16 w-full items-center rounded-md ${backgroundColor} p-4`}
+      className={`my-2 flex h-16 w-full items-center rounded-md ${backgroundColor} pr-5 pl-6`}
     >
       <img
         className="h-12 w-12"
@@ -17,7 +17,7 @@ const ChannelListItem = ({
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
       <button onClick={onToggleFavorite}>
-        <BlankStarIcon className="ml-2" />
+        <BlankStarIcon className="ml-3" />
       </button>
     </li>
   );
