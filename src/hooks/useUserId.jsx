@@ -9,10 +9,14 @@ const useUserId = () => {
       const storedId = localStorage.getItem("userId");
 
       if (storedId === null) {
-        const {
-          data: { userId },
-        } = await axios.post(`${import.meta.env.VITE_API_URL}/users`);
-        localStorage.setItem("userId", userId);
+        try {
+          const {
+            data: { userId },
+          } = await axios.post(`${import.meta.env.VITE_API_URL}/users`);
+          localStorage.setItem("userId", userId);
+        } catch (error) {
+          console.error("fetch userId failed: ", error);
+        }
       } else {
         setUserId(storedId);
       }
