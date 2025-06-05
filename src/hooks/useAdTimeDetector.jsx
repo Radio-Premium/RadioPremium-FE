@@ -22,10 +22,7 @@ const useAdTimeDetector = (handleChannelSwitch) => {
   useEffect(() => {
     const checkAdTime = () => {
       const now = new Date();
-      const minutes = now.getMinutes();
-      const seconds = now.getSeconds();
-
-      const isAdTime = isAdTimeNow(minutes, seconds);
+      const isAdTime = isAdTimeNow(now.getMinutes(), now.getSeconds());
 
       if (isAdTime && !isAdTimeAlreadyHandled.current) {
         isAdTimeAlreadyHandled.current = true;
