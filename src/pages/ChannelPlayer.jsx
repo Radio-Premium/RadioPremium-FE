@@ -5,7 +5,7 @@ import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
-import controlStreamPlayback from "@/utils/playControl";
+import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -20,7 +20,7 @@ const ChannelPlayer = ({ isChannelChanged }) => {
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
 
   const handlePlayPause = () => {
-    controlStreamPlayback(videoId, !isPlaying);
+    controlStreamingPlayback(videoId, !isPlaying);
     setIsPlaying((prev) => !prev);
   };
 

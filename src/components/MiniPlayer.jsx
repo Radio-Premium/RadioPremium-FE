@@ -3,14 +3,14 @@ import { useState, useRef } from "react";
 import CloseIcon from "@/assets/svgs/icon-close.svg?react";
 import PauseIcon from "@/assets/svgs/icon-mini-pause.svg?react";
 import PlayIcon from "@/assets/svgs/icon-mini-player.svg?react";
-import controlStreamPlayback from "@/utils/playControl";
+import controlStreamingPlayback from "@/utils/playControl";
 
 const MiniPlayer = ({ thumbnail, channelName, closePlayer }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const videoId = useRef(null);
 
   const handlePlayPause = () => {
-    controlStreamPlayback(videoId, !isPlaying);
+    controlStreamingPlayback(videoId, !isPlaying);
     setIsPlaying((prev) => !prev);
   };
 

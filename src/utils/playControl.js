@@ -4,7 +4,7 @@ const STREAM_URL =
   "https://mgugaklive.nowcdn.co.kr/gugakradio/gugakradio.stream/playlist.m3u8";
 let hlsInstance = null;
 
-const controlStreamPlayback = (videoId, isPlaying) => {
+const controlStreamingPlayback = (videoId, isPlaying) => {
   const video = videoId.current;
 
   if (isPlaying) {
@@ -24,4 +24,4 @@ const controlStreamPlayback = (videoId, isPlaying) => {
   }
 };
 
-export default controlStreamPlayback;
+export default controlStreamingPlayback;
