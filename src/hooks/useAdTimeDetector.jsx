@@ -1,5 +1,21 @@
 import { useEffect, useRef } from "react";
 
+const isAdTimeNow = (minutes, seconds) => {
+  const isPreThirtyAdTime =
+    (minutes === 27 && seconds >= 30) ||
+    minutes === 28 ||
+    minutes === 29 ||
+    (minutes === 30 && seconds === 0);
+
+  const isPreHourAdTime =
+    minutes === 57 ||
+    minutes === 58 ||
+    minutes === 59 ||
+    (minutes === 0 && seconds === 0);
+
+  return isPreThirtyAdTime || isPreHourAdTime;
+};
+
 const useAdTimeDetector = (switchChannelOnAd) => {
   const isAdTimeAlreadyHandled = useRef(false);
 
@@ -9,19 +25,7 @@ const useAdTimeDetector = (switchChannelOnAd) => {
       const minutes = now.getMinutes();
       const seconds = now.getSeconds();
 
-      const isPreThirtyAdTime =
-        (minutes === 27 && seconds >= 30) ||
-        minutes === 28 ||
-        minutes === 29 ||
-        (minutes === 30 && seconds === 0);
-
-      const isPreHourAdTime =
-        minutes === 57 ||
-        minutes === 58 ||
-        minutes === 59 ||
-        (minutes === 0 && seconds === 0);
-
-      const isAdTime = isPreThirtyAdTime || isPreHourAdTime;
+      const isAdTime = isAdTimeNow(minutes, seconds);
 
       if (isAdTime && !isAdTimeAlreadyHandled.current) {
         isAdTimeAlreadyHandled.current = true;
