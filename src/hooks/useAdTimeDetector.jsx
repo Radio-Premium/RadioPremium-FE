@@ -29,11 +29,12 @@ const useAdTimeDetector = (switchChannelOnAd) => {
 
       if (isAdTime && !isAdTimeAlreadyHandled.current) {
         isAdTimeAlreadyHandled.current = true;
-        switchChannelOnAd();
+        switchChannelOnAd(true);
       }
 
       if (!isAdTime && isAdTimeAlreadyHandled.current) {
         isAdTimeAlreadyHandled.current = false;
+        switchChannelOnAd(false);
       }
     };
 
