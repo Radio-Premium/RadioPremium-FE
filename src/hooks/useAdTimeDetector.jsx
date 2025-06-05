@@ -16,7 +16,7 @@ const isAdTimeNow = (minutes, seconds) => {
   return isPreThirtyAdTime || isPreHourAdTime;
 };
 
-const useAdTimeDetector = (switchChannelOnAd) => {
+const useAdTimeDetector = (handleChannelSwitch) => {
   const isAdTimeAlreadyHandled = useRef(false);
 
   useEffect(() => {
@@ -29,19 +29,19 @@ const useAdTimeDetector = (switchChannelOnAd) => {
 
       if (isAdTime && !isAdTimeAlreadyHandled.current) {
         isAdTimeAlreadyHandled.current = true;
-        switchChannelOnAd(true);
+        handleChannelSwitch(true);
       }
 
       if (!isAdTime && isAdTimeAlreadyHandled.current) {
         isAdTimeAlreadyHandled.current = false;
-        switchChannelOnAd(false);
+        handleChannelSwitch(false);
       }
     };
 
     const timer = setInterval(checkAdTime, 10000);
 
     return () => clearInterval(timer);
-  }, [switchChannelOnAd]);
+  }, [handleChannelSwitch]);
 };
 
 export default useAdTimeDetector;
