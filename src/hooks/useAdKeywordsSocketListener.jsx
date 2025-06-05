@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
-import useChannelSwitchOnAd from "@/hooks/useChannelSwitchOnAd";
+import useChannelSwitch from "@/hooks/useChannelSwitch";
 import socket from "@/sockets/socketClient";
 
 const useAdKeywordsSocketListener = () => {
-  const handleChannelSwitch = useChannelSwitchOnAd();
+  const handleChannelSwitch = useChannelSwitch();
 
   useEffect(() => {
     socket.on("connect", () => {

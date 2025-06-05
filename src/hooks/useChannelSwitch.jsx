@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useChannelStore } from "@/store/useChannelStore";
 
-const useChannelSwitchOnAd = () => {
+const useChannelSwitch = () => {
   const prevChannelId = useChannelStore((state) => state.prevChannelId);
   const setPrevChannelId = useChannelStore((state) => state.setPrevChannelId);
   const navigate = useNavigate();
@@ -31,4 +31,4 @@ const useChannelSwitchOnAd = () => {
   return handleChannelSwitch;
 };
 
-export default useChannelSwitchOnAd;
+export default useChannelSwitch;
