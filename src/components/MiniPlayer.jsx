@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import CloseIcon from "@/assets/svgs/icon-close.svg?react";
 import PauseIcon from "@/assets/svgs/icon-mini-pause.svg?react";
@@ -7,9 +7,10 @@ import controlStreamPlayback from "@/utils/playControl";
 
 const MiniPlayer = ({ thumbnail, channelName, closePlayer }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const videoId = useRef(null);
 
   const handlePlayPause = () => {
-    controlStreamPlayback("radio-player", !isPlaying);
+    controlStreamPlayback(videoId, !isPlaying);
     setIsPlaying((prev) => !prev);
   };
 
@@ -23,7 +24,7 @@ const MiniPlayer = ({ thumbnail, channelName, closePlayer }) => {
         />
         <p className="ml-2 text-sm font-black">{channelName}</p>
       </div>
-      <video id="radio-player" className="hidden" />
+      <video ref={videoId} className="hidden" />
       <div className="flex items-center gap-3">
         {!isPlaying ? (
           <PlayIcon
