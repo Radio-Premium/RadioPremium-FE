@@ -5,7 +5,7 @@ const STREAM_URL =
 let hlsInstance = null;
 
 const controlStreamPlayback = (videoId, isPlaying) => {
-  const video = document.getElementById(videoId);
+  const video = videoId.current;
 
   if (isPlaying) {
     if (Hls.isSupported()) {
