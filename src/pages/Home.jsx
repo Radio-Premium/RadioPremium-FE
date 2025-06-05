@@ -3,8 +3,10 @@ import ChannelSection from "@/components/ChannelSection";
 import FavoriteChannelList from "@/components/FavoriteChannelList";
 import TabBar from "@/components/TabBar";
 import useCategorizeChannels from "@/hooks/useCategorizeChannel";
+import useChannels from "@/hooks/useChannels";
 
 const Home = () => {
+  useChannels();
   const [channelList, favoriteChannelList] = useCategorizeChannels();
 
   return (
