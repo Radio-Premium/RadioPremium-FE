@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 const useAdTimeDetector = (switchChannelOnAd) => {
+  const isAdTimeAlreadyHandled = useRef(false);
+
   useEffect(() => {
     const checkAdTime = () => {
       const now = new Date();
@@ -19,10 +21,18 @@ const useAdTimeDetector = (switchChannelOnAd) => {
         minutes === 59 ||
         (minutes === 0 && seconds === 0);
 
-      if (isPreThirtyAdTime || isPreHourAdTime) {
+      const isAdTime = isPreThirtyAdTime || isPreHourAdTime;
+
+      if (isAdTime && !isAdTimeAlreadyHandled.current) {
+        isAdTimeAlreadyHandled.current = true;
         switchChannelOnAd();
       }
+
+      if (!isAdTime && isAdTimeAlreadyHandled.current) {
+        isAdTimeAlreadyHandled.current = false;
+      }
     };
+
     const timer = setInterval(checkAdTime, 10000);
 
     return () => clearInterval(timer);
