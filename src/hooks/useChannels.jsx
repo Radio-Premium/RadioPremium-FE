@@ -7,7 +7,9 @@ const useChannels = () => {
   const { radioChannelList, setRadioChannelList } = useChannelStore();
 
   useEffect(() => {
-    if (radioChannelList.length > 0) return;
+    if (radioChannelList.length > 0) {
+      return;
+    }
 
     const initChannels = async () => {
       const { data } = await axios.get(
