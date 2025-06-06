@@ -8,12 +8,12 @@ const useChannelNavigation = () => {
     (state) => state.setSelectedChannelId
   );
 
-  const navigateToChannelPlayer = (channelId) => {
+  const goToChannelPlayer = (channelId) => {
     setSelectedChannelId(channelId);
     navigate("/channel-player");
   };
 
-  return navigateToChannelPlayer;
+  return goToChannelPlayer;
 };
 
 export default useChannelNavigation;

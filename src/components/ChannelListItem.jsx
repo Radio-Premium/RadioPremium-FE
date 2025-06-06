@@ -8,12 +8,12 @@ const ChannelListItem = ({
   onToggleFavorite,
   backgroundColor,
 }) => {
-  const navigateToChannelPlayer = useChannelNavigation();
+  const goToChannelPlayer = useChannelNavigation();
 
   return (
     <li
       className={`my-2 flex h-16 w-full items-center rounded-md ${backgroundColor} pr-5 pl-6`}
-      onClick={() => navigateToChannelPlayer(channelId)}
+      onClick={() => goToChannelPlayer(channelId)}
     >
       <img
         className="h-12 w-12"
