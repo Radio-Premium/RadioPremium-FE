@@ -5,7 +5,8 @@ export const useChannelStore = create((set) => ({
   prevChannelId: null,
   radioChannelList: [],
 
-  setInterestChannelIds: (ids) => set({ interestChannelIds: ids }),
+  setInterestChannelIds: (interestChannelIds) =>
+    set({ interestChannelIds: interestChannelIds }),
   setPrevChannelId: (channelId) => set({ prevChannelId: channelId }),
   setRadioChannelList: (channelList) => set({ radioChannelList: channelList }),
 }));
