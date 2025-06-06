@@ -1,5 +1,6 @@
 import BlankStarIcon from "@/assets/svgs/icon-blank-star.svg?react";
 import useChannelNavigation from "@/hooks/useChannelNavigation";
+import useToggleFavorite from "@/hooks/useToggleFavorite";
 
 const ChannelListItem = ({
   thumbnail,
@@ -8,6 +9,7 @@ const ChannelListItem = ({
   backgroundColor,
 }) => {
   const goToChannelPlayer = useChannelNavigation();
+  const toggleFavorite = useToggleFavorite();
 
   return (
     <li
@@ -20,7 +22,12 @@ const ChannelListItem = ({
         alt={`${channelName} 썸네일`}
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
-      <button onClick={(e) => e.stopPropagation()}>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleFavorite(channelId);
+        }}
+      >
         <BlankStarIcon className="ml-3" />
       </button>
     </li>

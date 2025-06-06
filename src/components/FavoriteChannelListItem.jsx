@@ -4,6 +4,7 @@ import { CSS } from "@dnd-kit/utilities";
 import DragDropIcon from "@/assets/svgs/icon-drag-drop.svg?react";
 import FilledStarIcon from "@/assets/svgs/icon-filled-star.svg?react";
 import useChannelNavigation from "@/hooks/useChannelNavigation";
+import useToggleFavorite from "@/hooks/useToggleFavorite";
 
 const FavoriteChannelListItem = ({ thumbnail, channelId, channelName }) => {
   const {
@@ -16,6 +17,7 @@ const FavoriteChannelListItem = ({ thumbnail, channelId, channelName }) => {
     transition,
   } = useSortable({ id: channelId });
   const goToChannelPlayer = useChannelNavigation();
+  const toggleFavorite = useToggleFavorite();
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -39,7 +41,12 @@ const FavoriteChannelListItem = ({ thumbnail, channelId, channelName }) => {
         {channelName}
       </p>
       <div className="flex flex-1 justify-end pr-2">
-        <button onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            toggleFavorite(channelId);
+          }}
+        >
           <FilledStarIcon className="mr-1 mb-0.5 ml-2" />
         </button>
         <button
