@@ -14,7 +14,7 @@ const router = createBrowserRouter([
     children: [
       { path: "", element: <Home /> },
       { path: "search-result", element: <Search /> },
-      { path: "channel/:id", element: <ChannelPlayer /> },
+      { path: "channel-player", element: <ChannelPlayer /> },
       { path: "settings", element: <Settings /> },
     ],
   },

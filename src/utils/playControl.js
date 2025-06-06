@@ -1,22 +1,20 @@
 import Hls from "hls.js";
 
-const STREAM_URL =
-  "https://mgugaklive.nowcdn.co.kr/gugakradio/gugakradio.stream/playlist.m3u8";
 let hlsInstance = null;
 
-const controlStreamingPlayback = (videoId, isPlaying) => {
+const controlStreamingPlayback = (videoId, videoUrl, isPlaying) => {
   const video = videoId.current;
 
   if (isPlaying) {
     if (Hls.isSupported()) {
       hlsInstance = new Hls();
-      hlsInstance.loadSource(STREAM_URL);
+      hlsInstance.loadSource(videoUrl);
       hlsInstance.attachMedia(video);
       hlsInstance.on(Hls.Events.MANIFEST_PARSED, () => {
         video.play();
       });
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = STREAM_URL;
+      video.src = videoUrl;
       video.play();
     }
   } else {
