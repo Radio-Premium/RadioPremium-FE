@@ -5,9 +5,7 @@ export const useUserStore = create((set) => ({
     isAdDetect: true,
     isReturnChannel: false,
   },
-  interestChannels: [],
 
   setUserSettings: ({ isAdDetect, isReturnChannel }) =>
     set({ settings: { isAdDetect, isReturnChannel } }),
-  setInterestChannels: (interestChannels) => set({ interestChannels }),
 }));
