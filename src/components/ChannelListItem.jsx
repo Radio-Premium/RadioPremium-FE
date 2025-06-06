@@ -1,14 +1,19 @@
 import BlankStarIcon from "@/assets/svgs/icon-blank-star.svg?react";
+import useChannelNavigation from "@/hooks/useChannelNavigation";
 
 const ChannelListItem = ({
   thumbnail,
+  channelId,
   channelName,
   onToggleFavorite,
   backgroundColor,
 }) => {
+  const navigateToChannelPlayer = useChannelNavigation();
+
   return (
     <li
       className={`my-2 flex h-16 w-full items-center rounded-md ${backgroundColor} pr-5 pl-6`}
+      onClick={() => navigateToChannelPlayer(channelId)}
     >
       <img
         className="h-12 w-12"
