@@ -5,13 +5,13 @@ import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
-import useFetchChannel from "@/hooks/useFetchChannel";
+import useChannelInfo from "@/hooks/useChannelInfo";
 import { useChannelStore } from "@/store/useChannelStore";
 import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
-  const { name, url, logoUrl } = useFetchChannel(selectedChannelId);
+  const { name, url, logoUrl } = useChannelInfo(selectedChannelId);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoId = useRef(null);
 

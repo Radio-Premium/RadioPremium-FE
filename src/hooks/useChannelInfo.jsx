@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useFetchChannel = (channelId) => {
+const useChannelInfo = (channelId) => {
   const [channelInfo, setChannelInfo] = useState({});
 
   useEffect(() => {
-    const fetchChannel = async () => {
+    const fetchChannelInfo = async () => {
       try {
         const { data } = await axios.get(
           `${import.meta.env.VITE_API_URL}/radio-channels/${channelId}`
@@ -16,10 +16,10 @@ const useFetchChannel = (channelId) => {
       }
     };
 
-    fetchChannel();
+    fetchChannelInfo();
   }, [channelId]);
 
   return channelInfo;
 };
 
-export default useFetchChannel;
+export default useChannelInfo;
