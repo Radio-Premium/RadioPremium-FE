@@ -1,6 +1,16 @@
 import ToggleButton from "@/components/ui/ToggleButton";
+import { useUserStore } from "@/store/useUserStore";
 
-const SettingListItem = ({ title, explanations }) => {
+const SettingListItem = ({ type, title, explanations }) => {
+  const { settings, setUserSettings } = useUserStore();
+
+  const handleToggle = () => {
+    setUserSettings({
+      ...settings,
+      [type]: !settings[type],
+    });
+  };
+
   return (
     <li className="my-4 flex h-[100px] w-full min-w-80 rounded-md bg-gray-100 px-4 pt-4">
       <div className="w-[272px]">
@@ -16,7 +26,7 @@ const SettingListItem = ({ title, explanations }) => {
         )}
       </div>
       <div className="my-auto ml-auto">
-        <ToggleButton />
+        <ToggleButton checked={settings[type]} onToggle={handleToggle} />
       </div>
     </li>
   );

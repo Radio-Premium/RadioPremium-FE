@@ -29,6 +29,7 @@ const Settings = () => {
           {settingList.map(({ type, title, explanations }) => (
             <SettingListItem
               key={type}
+              type={type}
               title={title}
               explanations={explanations}
             />

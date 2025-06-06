@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Button from "@/components/ui/Button";
 
 const toggleSize = {
@@ -15,25 +13,19 @@ const toggleSize = {
   },
 };
 
-const ToggleButton = ({ size = "m" }) => {
-  const [isToggled, setIsToggled] = useState(false);
-
-  const toggleSwitch = () => {
-    setIsToggled((prev) => !prev);
-  };
-
+const ToggleButton = ({ size = "m", checked, onToggle }) => {
   const { buttonSize, thumbSize, activeTranslate } = toggleSize[size];
 
   return (
     <Button
       className={`relative cursor-pointer rounded-full transition-colors duration-200 ${
-        isToggled ? "bg-black" : "bg-neutral-300"
+        checked ? "bg-black" : "bg-neutral-300"
       } ${buttonSize}`}
-      onClick={toggleSwitch}
+      onClick={onToggle}
     >
       <div
         className={`absolute top-1 left-1 rounded-full bg-white duration-400 ${
-          isToggled ? activeTranslate : "translate-x-0"
+          checked ? activeTranslate : "translate-x-0"
         } ${thumbSize}`}
       />
     </Button>
