@@ -2,14 +2,16 @@ import ChannelListItem from "@/components/ChannelListItem";
 import ChannelSection from "@/components/ChannelSection";
 import FavoriteChannelList from "@/components/FavoriteChannelList";
 import TabBar from "@/components/TabBar";
-import useCategorizeChannels from "@/hooks/useCategorizeChannel";
+import useCategorizeChannels from "@/hooks/useCategorizeChannels";
 import useChannels from "@/hooks/useChannels";
+import useInterestChannels from "@/hooks/useInterestChannels";
 import useUserId from "@/hooks/useUserId";
 
 const Home = () => {
   useChannels();
   const userId = useUserId();
-  const [channelList, favoriteChannelList] = useCategorizeChannels(userId);
+  useInterestChannels(userId);
+  const [favoriteChannelList, otherChannelList] = useCategorizeChannels();
 
   return (
     <>
@@ -19,7 +21,7 @@ const Home = () => {
           <FavoriteChannelList channelList={favoriteChannelList} />
         </ChannelSection>
         <ChannelSection title="Channel">
-          {channelList.map(({ channelId, name, logoUrl }) => (
+          {otherChannelList.map(({ channelId, name, logoUrl }) => (
             <ChannelListItem
               key={channelId}
               channelId={channelId}

@@ -1,11 +1,14 @@
 import { create } from "zustand";
 
 export const useChannelStore = create((set) => ({
-  radioChannelList: [],
+  interestChannelIds: [],
   prevChannelId: null,
+  radioChannelList: [],
   selectedChannelId: null,
 
-  setRadioChannelList: (channelList) => set({ radioChannelList: channelList }),
+  setInterestChannelIds: (interestChannelIds) =>
+    set({ interestChannelIds: interestChannelIds }),
   setPrevChannelId: (channelId) => set({ prevChannelId: channelId }),
+  setRadioChannelList: (channelList) => set({ radioChannelList: channelList }),
   setSelectedChannelId: (channelId) => set({ selectedChannelId: channelId }),
 }));
