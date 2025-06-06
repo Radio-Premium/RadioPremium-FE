@@ -5,22 +5,22 @@ import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
+import useChannelInfo from "@/hooks/useChannelInfo";
+import { useChannelStore } from "@/store/useChannelStore";
 import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
+  const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
+  const { name, url, logoUrl } = useChannelInfo(selectedChannelId);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoId = useRef(null);
 
-  // 데이터 연결 전 임시 값 할당
-  const logoUrl =
-    "https://www.urbanbrush.net/web/wp-content/uploads/edd/2019/08/urbanbrush-20190805082332272597.png";
-  const channelTitle = "RDO 라디오방송";
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
 
   const handlePlayPause = () => {
-    controlStreamingPlayback(videoId, !isPlaying);
+    controlStreamingPlayback(videoId, url, !isPlaying);
     setIsPlaying((prev) => !prev);
   };
 
@@ -33,7 +33,7 @@ const ChannelPlayer = ({ isChannelChanged }) => {
           alt="채널 로고"
         />
         <p className="mt-3.5 text-center text-lg font-bold sm:text-xl">
-          {channelTitle}
+          {name}
         </p>
         <div className="mt-2 flex items-center gap-x-2">
           <p className="text-sm font-semibold sm:text-base">{buttonLabel}</p>
