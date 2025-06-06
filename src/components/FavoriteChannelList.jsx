@@ -54,8 +54,13 @@ const FavoriteChannelList = ({ channelList }) => {
         items={favoriteChannelList}
         strategy={verticalListSortingStrategy}
       >
-        {favoriteChannelList.map(({ id, name }) => (
-          <FavoriteChannelListItem key={id} id={id} name={name} />
+        {favoriteChannelList.map(({ logoUrl, id, name }) => (
+          <FavoriteChannelListItem
+            key={id}
+            thumbnail={logoUrl}
+            channelId={id}
+            channelName={name}
+          />
         ))}
       </SortableContext>
     </DndContext>
