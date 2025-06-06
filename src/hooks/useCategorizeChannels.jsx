@@ -11,7 +11,7 @@ const useCategorizeChannels = () => {
   const [otherChannelList, setOtherChannelList] = useState([]);
 
   useEffect(() => {
-    if (radioChannelList.length === 0) {
+    if (!radioChannelList.length) {
       return;
     }
 
