@@ -20,6 +20,7 @@ const Home = () => {
           {channelList.map(({ channelId, name, logoUrl }) => (
             <ChannelListItem
               key={channelId}
+              channelId={channelId}
               channelName={name}
               thumbnail={logoUrl}
             />
