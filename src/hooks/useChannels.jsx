@@ -12,10 +12,14 @@ const useChannels = () => {
     }
 
     const initChannels = async () => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/radio-channels`
-      );
-      setRadioChannelList(data);
+      try {
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/radio-channels`
+        );
+        setRadioChannelList(data);
+      } catch (error) {
+        console.error("fetch radioChannels failed: ", error);
+      }
     };
     initChannels();
   }, [radioChannelList, setRadioChannelList]);
