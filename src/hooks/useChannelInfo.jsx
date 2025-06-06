@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useChannelInfo = (channelId) => {
-  const [channelInfo, setChannelInfo] = useState({});
+  const [channelInfo, setChannelInfo] = useState(null);
 
   useEffect(() => {
     const fetchChannelInfo = async () => {
