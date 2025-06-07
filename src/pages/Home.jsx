@@ -21,12 +21,13 @@ const Home = () => {
           <FavoriteChannelList channelList={favoriteChannelList} />
         </ChannelSection>
         <ChannelSection title="Channel">
-          {otherChannelList.map(({ channelId, name, logoUrl }) => (
+          {otherChannelList.map(({ id, name, logoUrl }) => (
             <ChannelListItem
-              key={channelId}
-              channelId={channelId}
+              key={id}
+              channelId={id}
               channelName={name}
               thumbnail={logoUrl}
+              backgroundColor="bg-gray-100"
             />
           ))}
         </ChannelSection>
