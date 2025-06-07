@@ -26,7 +26,7 @@ const ChannelPlayer = ({ isChannelChanged }) => {
 
   const handlePlayPause = () => {
     controlStreamingPlayback(videoId, selectedChannelId, isPlaying);
-    setIsPlaying(!isPlaying);
+    setIsPlaying((prev) => !prev);
   };
 
   return (

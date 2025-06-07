@@ -15,6 +15,9 @@ export const useChannelStore = create(
     setRadioChannelList: (channelList) =>
       set({ radioChannelList: channelList }),
     setSelectedChannelId: (channelId) => set({ selectedChannelId: channelId }),
-    setIsPlaying: (isPlaying) => set({ isPlaying: isPlaying }),
+    setIsPlaying: (updater) =>
+      typeof updater === "function"
+        ? set((state) => ({ isPlaying: updater(state.isPlaying) }))
+        : set({ isPlaying: updater }),
   }))
 );
