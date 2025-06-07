@@ -1,7 +1,7 @@
 import {
   createInterestChannel,
   deleteInterestChannel,
-} from "@/apis/interestChannel";
+} from "@/apis/interestChannels";
 import useUserId from "@/hooks/useUserId";
 import { useChannelStore } from "@/store/useChannelStore";
 

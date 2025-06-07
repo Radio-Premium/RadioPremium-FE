@@ -1,6 +1,6 @@
 import { arrayMove } from "@dnd-kit/sortable";
 
-import { updateInterestChannels } from "@/apis/interestChannel";
+import { updateInterestChannels } from "@/apis/interestChannels";
 
 export const handleChannelDragEnd = async (
   event,
