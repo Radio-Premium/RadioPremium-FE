@@ -11,9 +11,15 @@ import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
-  const { name, url, logoUrl } = useChannelInfo(selectedChannelId);
+  const channelInfo = useChannelInfo(selectedChannelId);
   const [isPlaying, setIsPlaying] = useState(false);
   const videoId = useRef(null);
+
+  if (!selectedChannelId || !channelInfo) {
+    return null;
+  }
+
+  const { name, url, logoUrl } = channelInfo;
 
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
