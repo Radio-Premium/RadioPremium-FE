@@ -8,14 +8,14 @@ const useUserProfile = () => {
 
   useEffect(() => {
     const initUserProfile = async () => {
-      const storedId = localStorage.getItem("userId");
-      if (!storedId) {
+      const userId = localStorage.getItem("userId");
+      if (!userId) {
         return;
       }
 
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/users/${storedId}`
+          `${import.meta.env.VITE_API_URL}/users/${userId}`
         );
         const { isAdDetect, isReturnChannel } = response.data;
         setUserSettings({ isAdDetect, isReturnChannel });
