@@ -13,9 +13,9 @@ const ChannelPlayer = ({ isChannelChanged }) => {
   const radioChannelList = useChannelStore((state) => state.radioChannelList);
   const isPlaying = useChannelStore((state) => state.isPlaying);
   const setIsPlaying = useChannelStore((state) => state.setIsPlaying);
-  const channel = radioChannelList.filter((channel) => {
-    channel.id === selectedChannelId;
-  });
+  const channel = radioChannelList.find(
+    (channel) => channel.id === selectedChannelId
+  );
   const videoId = useRef(null);
 
   const { name, logoUrl } = channel;
