@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Checkbox from "@/components/ui/Checkbox";
 
 const ToggleCheckbox = ({
@@ -7,16 +5,16 @@ const ToggleCheckbox = ({
   onSelect,
   parentOption,
   childrenOptions,
+  selectedChildId,
+  onChangeChild,
 }) => {
-  const [selectedChildId, setSelectedChildId] = useState(null);
-
   const handleParentClick = () => {
     onSelect();
-    setSelectedChildId(null);
+    onChangeChild(null);
   };
 
   const toggleChildOption = (id) => {
-    setSelectedChildId((prev) => (prev === id ? null : id));
+    onChangeChild(selectedChildId === id ? null : id);
   };
 
   return (

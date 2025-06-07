@@ -35,6 +35,7 @@ const AdReportModal = ({
   onClose,
 }) => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedChildId, setSelectedChildId] = useState(null);
 
   const submitAdReport = useSubmitAdReport();
   const userId = useUserId();
@@ -80,6 +81,8 @@ const AdReportModal = ({
                 onSelect={() => toggleParentOption(key)}
                 parentOption={parentOption}
                 childrenOptions={childrenOptions}
+                selectedChildId={selectedChildId}
+                onChangeChild={setSelectedChildId}
               />
             )
           )}
