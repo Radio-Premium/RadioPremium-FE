@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Checkbox from "@/components/ui/Checkbox";
 
 const ToggleCheckbox = ({
@@ -7,16 +5,16 @@ const ToggleCheckbox = ({
   onSelect,
   parentOption,
   childrenOptions,
+  selectedSubOptionId,
+  onSelectSubOption,
 }) => {
-  const [selectedChildId, setSelectedChildId] = useState(null);
-
   const handleParentClick = () => {
     onSelect();
-    setSelectedChildId(null);
+    onSelectSubOption(null);
   };
 
   const toggleChildOption = (id) => {
-    setSelectedChildId((prev) => (prev === id ? null : id));
+    onSelectSubOption(selectedSubOptionId === id ? null : id);
   };
 
   return (
@@ -34,7 +32,7 @@ const ToggleCheckbox = ({
           {childrenOptions.map(({ id, label }) => (
             <Checkbox
               key={id}
-              checked={selectedChildId === id}
+              checked={selectedSubOptionId === id}
               onChange={() => toggleChildOption(id)}
               labelClassName="text-[16px] whitespace-nowrap"
               inputClassName="h-[18px] min-h-[18px] w-[18px] min-w-[18px]"

@@ -25,7 +25,9 @@ const ReportHeader = () => {
         <AdReportIcon />
         광고 제보하기
       </button>
-      {isAdReportModalOpen && <AdReportModal />}
+      {isAdReportModalOpen && (
+        <AdReportModal onClose={() => setIsAdReportModalOpen(false)} />
+      )}
     </div>
   );
 };
