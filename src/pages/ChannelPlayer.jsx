@@ -1,32 +1,32 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
 
 import MainPauseIcon from "@/assets/svgs/icon-main-pause.svg?react";
 import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
-import useChannelInfo from "@/hooks/useChannelInfo";
 import { useChannelStore } from "@/store/useChannelStore";
 import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
-  const channelInfo = useChannelInfo(selectedChannelId);
-  const [isPlaying, setIsPlaying] = useState(false);
+  console.log(selectedChannelId);
+  const radioChannelList = useChannelStore((state) => state.radioChannelList);
+  const isPlaying = useChannelStore((state) => state.isPlaying);
+  const setIsPlaying = useChannelStore((state) => state.setIsPlaying);
+  const channel = radioChannelList.filter((channel) => {
+    channel.id === selectedChannelId;
+  });
   const videoId = useRef(null);
 
-  if (!selectedChannelId || !channelInfo) {
-    return null;
-  }
-
-  const { name, url, logoUrl } = channelInfo;
+  const { name, logoUrl } = channel;
 
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
 
   const handlePlayPause = () => {
-    controlStreamingPlayback(videoId, url, !isPlaying);
+    controlStreamingPlayback(videoId, selectedChannelId, isPlaying);
     setIsPlaying((prev) => !prev);
   };
 
