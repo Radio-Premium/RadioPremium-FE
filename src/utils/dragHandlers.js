@@ -13,7 +13,9 @@ export const handleChannelDragEnd = async (
   }
 
   const { active, over } = event;
-  if (!over || active.id === over.id) return;
+  if (!over || active.id === over.id) {
+    return;
+  }
 
   const oldIndex = favoriteChannelList.findIndex(
     (channel) => channel.id === active.id
