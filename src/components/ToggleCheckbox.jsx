@@ -5,16 +5,16 @@ const ToggleCheckbox = ({
   onSelect,
   parentOption,
   childrenOptions,
-  selectedChildId,
-  onChangeChild,
+  selectedSubOptionId,
+  onSelectSubOption,
 }) => {
   const handleParentClick = () => {
     onSelect();
-    onChangeChild(null);
+    onSelectSubOption(null);
   };
 
   const toggleChildOption = (id) => {
-    onChangeChild(selectedChildId === id ? null : id);
+    onSelectSubOption(selectedSubOptionId === id ? null : id);
   };
 
   return (
@@ -32,7 +32,7 @@ const ToggleCheckbox = ({
           {childrenOptions.map(({ id, label }) => (
             <Checkbox
               key={id}
-              checked={selectedChildId === id}
+              checked={selectedSubOptionId === id}
               onChange={() => toggleChildOption(id)}
               labelClassName="text-[16px] whitespace-nowrap"
               inputClassName="h-[18px] min-h-[18px] w-[18px] min-w-[18px]"

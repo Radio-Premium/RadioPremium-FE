@@ -34,8 +34,8 @@ const AdReportModal = ({
   detectedAdPhrase,
   onClose,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-  const [selectedChildId, setSelectedChildId] = useState(null);
+  const [selectedParentOption, setSelectedParentOption] = useState(null);
+  const [selectedChildOption, setSelectedChildOption] = useState(null);
 
   const submitAdReport = useSubmitAdReport();
   const userId = useUserId();
@@ -50,11 +50,11 @@ const AdReportModal = ({
     }
   );
   const toggleParentOption = (option) => {
-    setSelectedOption((prev) => (prev === option ? null : option));
+    setSelectedParentOption((prev) => (prev === option ? null : option));
   };
 
   const handleSubmit = async () => {
-    const isAd = selectedOption === AD_REPORT_TYPES.AD;
+    const isAd = selectedParentOption === AD_REPORT_TYPES.AD;
 
     await submitAdReport({
       userId: Number(userId),
@@ -77,12 +77,12 @@ const AdReportModal = ({
             ([key, { parentOption, childrenOptions }]) => (
               <ToggleCheckbox
                 key={key}
-                isSelected={selectedOption === key}
+                isSelected={selectedParentOption === key}
                 onSelect={() => toggleParentOption(key)}
                 parentOption={parentOption}
                 childrenOptions={childrenOptions}
-                selectedChildId={selectedChildId}
-                onChangeChild={setSelectedChildId}
+                selectedSubOptionId={selectedChildOption}
+                onSelectSubOption={setSelectedChildOption}
               />
             )
           )}
@@ -98,7 +98,7 @@ const AdReportModal = ({
         <Button
           className="flex h-[35px] w-[75px] items-center justify-center rounded-md bg-[#5B4DFF] px-4 py-2 text-[16px] text-white hover:bg-[#4F46E5]"
           onClick={handleSubmit}
-          disabled={!selectedOption || !selectedChildId}
+          disabled={!selectedParentOption || !selectedChildOption}
         >
           확인
         </Button>
