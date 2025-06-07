@@ -4,13 +4,11 @@ import FavoriteChannelList from "@/components/FavoriteChannelList";
 import TabBar from "@/components/TabBar";
 import useCategorizeChannels from "@/hooks/useCategorizeChannels";
 import useChannels from "@/hooks/useChannels";
-import useInterestChannels from "@/hooks/useInterestChannels";
-import useUserId from "@/hooks/useUserId";
+import useUserData from "@/hooks/useUserData";
 
 const Home = () => {
   useChannels();
-  const userId = useUserId();
-  useInterestChannels(userId);
+  useUserData();
   const [favoriteChannelList, otherChannelList] = useCategorizeChannels();
 
   return (

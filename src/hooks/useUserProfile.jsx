@@ -3,16 +3,15 @@ import { useEffect } from "react";
 
 import { useUserStore } from "@/store/useUserStore";
 
-const useUserProfile = () => {
+const useUserProfile = (userId) => {
   const { setUserSettings } = useUserStore();
 
   useEffect(() => {
-    const initUserProfile = async () => {
-      const userId = localStorage.getItem("userId");
-      if (!userId) {
-        return;
-      }
+    if (!userId) {
+      return;
+    }
 
+    const initUserProfile = async () => {
       try {
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/users/${userId}`
@@ -24,7 +23,7 @@ const useUserProfile = () => {
       }
     };
     initUserProfile();
-  }, [setUserSettings]);
+  }, [userId, setUserSettings]);
 };
 
 export default useUserProfile;

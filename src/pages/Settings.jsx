@@ -1,6 +1,5 @@
 import SettingListItem from "@/components/SettingListItem";
 import TabBar from "@/components/TabBar";
-import useUserProfile from "@/hooks/useUserProfile";
 
 const settingList = [
   {
@@ -19,8 +18,6 @@ const settingList = [
 ];
 
 const Settings = () => {
-  useUserProfile();
-
   return (
     <>
       <TabBar />
