@@ -11,3 +11,9 @@ export const removeInterestChannel = (userId, channelId) =>
     `${import.meta.env.VITE_API_URL}/users/${userId}/interest-channels`,
     { data: { channelId } }
   );
+
+export const updateInterestChannel = (userId, channelIds) =>
+  axios.put(
+    `${import.meta.env.VITE_API_URL}/users/${userId}/interest-channels`,
+    { channelIds }
+  );

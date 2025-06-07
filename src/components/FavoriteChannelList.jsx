@@ -1,36 +1,22 @@
 import { closestCenter, DndContext } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
-  arrayMove,
   SortableContext,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 import { useEffect, useState } from "react";
 
 import FavoriteChannelListItem from "@/components/FavoriteChannelListItem";
+import useUserId from "@/hooks/useUserId";
+import { handleChannelDragEnd } from "@/utils/dragHandlers";
 
 const FavoriteChannelList = ({ channelList }) => {
   const [favoriteChannelList, setFavoriteChannelList] = useState(channelList);
+  const userId = useUserId();
 
   useEffect(() => {
     setFavoriteChannelList(channelList);
   }, [channelList]);
-
-  const handleChannelDragEnd = (event) => {
-    const { active, over } = event;
-
-    if (active.id !== over.id) {
-      const oldIndex = favoriteChannelList.findIndex(
-        (channel) => channel.id === active.id
-      );
-      const newIndex = favoriteChannelList.findIndex(
-        (channel) => channel.id === over.id
-      );
-
-      const newList = arrayMove(favoriteChannelList, oldIndex, newIndex);
-      setFavoriteChannelList(newList);
-    }
-  };
 
   const restrictToYRange = (args) => {
     const { transform } = args;
@@ -47,7 +33,14 @@ const FavoriteChannelList = ({ channelList }) => {
   return (
     <DndContext
       collisionDetection={closestCenter}
-      onDragEnd={handleChannelDragEnd}
+      onDragEnd={(event) =>
+        handleChannelDragEnd(
+          event,
+          favoriteChannelList,
+          setFavoriteChannelList,
+          userId
+        )
+      }
       modifiers={[restrictToVerticalAxis, restrictToYRange]}
     >
       <SortableContext
