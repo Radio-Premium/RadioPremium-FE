@@ -17,6 +17,7 @@ const useSubmitAdReport = () => {
       console.error("fetch ad report failed:", error);
     }
   };
+
   return reportAd;
 };
 
