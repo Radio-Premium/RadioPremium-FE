@@ -10,7 +10,6 @@ import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
-  console.log(selectedChannelId);
   const radioChannelList = useChannelStore((state) => state.radioChannelList);
   const isPlaying = useChannelStore((state) => state.isPlaying);
   const setIsPlaying = useChannelStore((state) => state.setIsPlaying);
