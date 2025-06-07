@@ -6,7 +6,7 @@ import FilledStarIcon from "@/assets/svgs/icon-filled-star.svg?react";
 import useChannelNavigation from "@/hooks/useChannelNavigation";
 import useToggleFavorite from "@/hooks/useToggleFavorite";
 
-const FavoriteChannelListItem = ({ thumbnail, channelId, channelName }) => {
+const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
   const {
     attributes,
     isDragging,
