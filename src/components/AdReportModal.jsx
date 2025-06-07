@@ -89,7 +89,10 @@ const AdReportModal = ({
         </div>
       </div>
       <div className="mt-[25px] flex w-full justify-end gap-x-2">
-        <Button className="flex h-[35px] w-[75px] items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-[16px] text-black hover:bg-gray-100">
+        <Button
+          className="flex h-[35px] w-[75px] items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-[16px] text-black hover:bg-gray-100"
+          onClick={onClose}
+        >
           취소
         </Button>
         <Button
