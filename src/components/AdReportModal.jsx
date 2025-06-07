@@ -28,7 +28,12 @@ const AD_REPORT_OPTIONS = {
   },
 };
 
-const AdReportModal = ({ isChannelChanged, channelId, detectedAdPhrase }) => {
+const AdReportModal = ({
+  isChannelChanged,
+  channelId,
+  detectedAdPhrase,
+  onClose,
+}) => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const submitAdReport = useSubmitAdReport();
@@ -56,6 +61,8 @@ const AdReportModal = ({ isChannelChanged, channelId, detectedAdPhrase }) => {
       detectedAdPhrase,
       channelId,
     });
+
+    onClose();
   };
 
   return (
