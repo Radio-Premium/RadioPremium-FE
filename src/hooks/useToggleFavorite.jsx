@@ -10,6 +10,10 @@ const useToggleFavorite = () => {
   const userId = useUserId();
 
   const toggleFavorite = async (channelId) => {
+    if (!userId || !channelId) {
+      return;
+    }
+
     const isFavorite = interestChannelIds.includes(channelId);
 
     try {

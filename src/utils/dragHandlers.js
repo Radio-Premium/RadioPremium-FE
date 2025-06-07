@@ -8,6 +8,10 @@ export const handleChannelDragEnd = async (
   setFavoriteChannelList,
   userId
 ) => {
+  if (!userId) {
+    return;
+  }
+
   const { active, over } = event;
   if (!over || active.id === over.id) return;
 
