@@ -95,6 +95,7 @@ const AdReportModal = ({
         <Button
           className="flex h-[35px] w-[75px] items-center justify-center rounded-md bg-[#5B4DFF] px-4 py-2 text-[16px] text-white hover:bg-[#4F46E5]"
           onClick={handleSubmit}
+          disabled={!selectedOption || !selectedChildId}
         >
           확인
         </Button>
