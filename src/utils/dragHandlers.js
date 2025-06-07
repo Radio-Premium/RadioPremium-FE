@@ -1,6 +1,6 @@
 import { arrayMove } from "@dnd-kit/sortable";
 
-import { updateInterestChannel } from "@/apis/interestChannel";
+import { updateInterestChannels } from "@/apis/interestChannel";
 
 export const handleChannelDragEnd = async (
   event,
@@ -23,7 +23,7 @@ export const handleChannelDragEnd = async (
 
   const newOrder = newList.map((channel) => channel.id);
   try {
-    await updateInterestChannel(userId, newOrder);
+    await updateInterestChannels(userId, newOrder);
   } catch (error) {
     console.error("fetch updateFavorite failed: ", error);
   }
