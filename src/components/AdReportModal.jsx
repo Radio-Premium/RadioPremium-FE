@@ -3,6 +3,8 @@ import { useState } from "react";
 import ToggleCheckbox from "@/components/ToggleCheckbox";
 import Button from "@/components/ui/Button";
 import Modal from "@/components/ui/Modal";
+import useSubmitAdReport from "@/hooks/useSubmitAdReport";
+import useUserId from "@/hooks/useUserId";
 
 const AD_REPORT_TYPES = {
   AD: "ad",
@@ -26,8 +28,11 @@ const AD_REPORT_OPTIONS = {
   },
 };
 
-const AdReportModal = ({ isChannelChanged }) => {
+const AdReportModal = ({ isChannelChanged, channelId, detectedAdPhrase }) => {
   const [selectedOption, setSelectedOption] = useState(null);
+
+  const submitAdReport = useSubmitAdReport();
+  const userId = useUserId();
 
   const availableReportOptions = Object.entries(AD_REPORT_OPTIONS).filter(
     ([key]) => {
@@ -40,6 +45,17 @@ const AdReportModal = ({ isChannelChanged }) => {
   );
   const toggleParentOption = (option) => {
     setSelectedOption((prev) => (prev === option ? null : option));
+  };
+
+  const handleSubmit = async () => {
+    const isAd = selectedOption === AD_REPORT_TYPES.AD;
+
+    await submitAdReport({
+      userId: Number(userId),
+      isAd,
+      detectedAdPhrase,
+      channelId,
+    });
   };
 
   return (
@@ -66,7 +82,10 @@ const AdReportModal = ({ isChannelChanged }) => {
         <Button className="flex h-[35px] w-[75px] items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-[16px] text-black hover:bg-gray-100">
           취소
         </Button>
-        <Button className="flex h-[35px] w-[75px] items-center justify-center rounded-md bg-[#5B4DFF] px-4 py-2 text-[16px] text-white hover:bg-[#4F46E5]">
+        <Button
+          className="flex h-[35px] w-[75px] items-center justify-center rounded-md bg-[#5B4DFF] px-4 py-2 text-[16px] text-white hover:bg-[#4F46E5]"
+          onClick={handleSubmit}
+        >
           확인
         </Button>
       </div>
