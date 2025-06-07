@@ -21,7 +21,6 @@ const useUpdateSetting = (type) => {
         `${import.meta.env.VITE_API_URL}/users/${userId}/settings`,
         updatedSettings
       );
-
       setUserSettings(updatedSettings);
     } catch (error) {
       console.error("setting change failed", error);
