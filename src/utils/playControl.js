@@ -16,6 +16,11 @@ const controlStreamingPlayback = async (
       const { data } = await getChannelInfo(selectedChannelId);
       const url = data.url;
 
+      if (hlsInstance) {
+        hlsInstance.destroy();
+        hlsInstance = null;
+      }
+
       if (Hls.isSupported()) {
         hlsInstance = new Hls();
         hlsInstance.loadSource(url);
