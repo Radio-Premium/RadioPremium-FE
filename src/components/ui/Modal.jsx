@@ -3,7 +3,7 @@ import WarningIcon from "@/assets/svgs/icon-warning-red.svg?react";
 const Modal = ({ title, subTitle, children }) => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 px-4 backdrop-blur-sm">
-      <div className="w-full max-w-[360px] rounded-xl bg-white px-5 py-6 shadow-lg sm:max-w-[420px]">
+      <div className="flex min-h-[400px] w-full max-w-[360px] flex-col rounded-xl bg-white px-5 py-6 shadow-lg">
         <div className="pb-2">
           <WarningIcon className="mx-auto h-11 w-11" />
         </div>
