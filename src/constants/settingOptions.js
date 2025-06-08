@@ -3,6 +3,11 @@ export const SETTING_TYPES = {
   RETURN_CHANNEL: "RETURN_CHANNEL",
 };
 
+export const SETTING_CAMEL_TYPES = {
+  [SETTING_TYPES.AD_DETECT]: "isAdDetect",
+  [SETTING_TYPES.RETURN_CHANNEL]: "isReturnChannel",
+};
+
 export const SETTING_TITLES = {
   [SETTING_TYPES.AD_DETECT]: "광고 감지",
   [SETTING_TYPES.RETURN_CHANNEL]: "기존 채널로 이동",
