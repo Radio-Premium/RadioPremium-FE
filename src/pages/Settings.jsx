@@ -1,34 +1,25 @@
 import SettingListItem from "@/components/SettingListItem";
 import TabBar from "@/components/TabBar";
-
-const settingList = [
-  {
-    type: "isAdDetect",
-    title: "광고 감지",
-    explanations: [
-      "현재 채널에서 광고를 자동으로 감지합니다.",
-      "광고가 감지되면 다른 채널로 이동합니다.",
-    ],
-  },
-  {
-    type: "isReturnChannel",
-    title: "기존 채널로 이동",
-    explanations: ["이전 채널의 광고가 종료되면", "자동으로 복귀합니다."],
-  },
-];
+import {
+  SETTING_TYPES,
+  SETTING_TITLES,
+  SETTING_EXPLANATIONS,
+} from "@/constants/settingsData";
 
 const Settings = () => {
+  const settingTypes = Object.values(SETTING_TYPES);
+
   return (
     <>
       <TabBar />
       <div className="p-4">
         <ul>
-          {settingList.map(({ type, title, explanations }) => (
+          {settingTypes.map((type) => (
             <SettingListItem
               key={type}
               type={type}
-              title={title}
-              explanations={explanations}
+              title={SETTING_TITLES[type]}
+              explanations={SETTING_EXPLANATIONS[type]}
             />
           ))}
         </ul>
