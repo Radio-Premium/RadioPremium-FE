@@ -15,7 +15,7 @@ const Header = () => {
     return <RadioSearchInput />;
   }
 
-  if (/^\/channel\/\d+$/.test(pathname)) {
+  if (pathname === "/channel-player") {
     return <ReportHeader />;
   }
 
