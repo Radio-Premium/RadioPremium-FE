@@ -5,7 +5,9 @@ import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
+import useUpdateSetting from "@/hooks/useUpdateSetting";
 import { useChannelStore } from "@/store/useChannelStore";
+import { useUserStore } from "@/store/useUserStore";
 import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
@@ -17,6 +19,7 @@ const ChannelPlayer = ({ isChannelChanged }) => {
     (channel) => channel.id === selectedChannelId
   );
   const videoId = useRef(null);
+  const { settings } = useUserStore();
 
   const { name, logoUrl } = channel;
 
@@ -24,9 +27,19 @@ const ChannelPlayer = ({ isChannelChanged }) => {
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
 
+  const settingType = isChannelChanged
+    ? SETTING_TYPES.RETURN_CHANNEL
+    : SETTING_TYPES.AD_DETECT;
+
+  const updateSetting = useUpdateSetting(settingType);
+
   const handlePlayPause = () => {
     controlStreamingPlayback(videoId, selectedChannelId, isPlaying);
     setIsPlaying((prev) => !prev);
+  };
+
+  const handleToggle = () => {
+    updateSetting();
   };
 
   return (
@@ -42,7 +55,11 @@ const ChannelPlayer = ({ isChannelChanged }) => {
         </p>
         <div className="mt-2 flex items-center gap-x-2">
           <p className="text-sm font-semibold sm:text-base">{buttonLabel}</p>
-          <ToggleButton size="s" />
+          <ToggleButton
+            size="s"
+            checked={settings[settingType]}
+            onToggle={handleToggle}
+          />
         </div>
         <video ref={videoId} className="hidden" />
         <Button className="mt-12" onClick={handlePlayPause}>
