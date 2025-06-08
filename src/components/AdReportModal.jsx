@@ -70,13 +70,17 @@ const AdReportModal = ({
           )}
         </div>
         <div className="w-full">
-          <label className="block text-left text-sm whitespace-nowrap text-gray-600">
+          <label
+            htmlFor="adPhraseInput"
+            className="mb-2 block text-left text-sm text-gray-600"
+          >
             📌 광고로 판단되는 멘트를 입력해주세요 (선택)
           </label>
           <input
+            id="adPhraseInput"
             type="text"
             placeholder="EX) '하핑하핑'"
-            className="mt-2 mb-3 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="mb-4 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
           <div className="flex justify-end gap-x-2">
             <Button
