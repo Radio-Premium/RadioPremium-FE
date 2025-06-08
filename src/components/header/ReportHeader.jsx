@@ -4,8 +4,11 @@ import { useNavigate } from "react-router-dom";
 import AdReportIcon from "@/assets/svgs/icon-ad-report.svg?react";
 import BackArrow from "@/assets/svgs/icon-back-arrow.svg?react";
 import AdReportModal from "@/components/AdReportModal";
+import { useChannelStore } from "@/store/useChannelStore";
 
 const ReportHeader = () => {
+  const channelId = useChannelStore((state) => state.selectedChannelId);
+
   const navigate = useNavigate();
   const [isAdReportModalOpen, setIsAdReportModalOpen] = useState(false);
 
@@ -26,7 +29,10 @@ const ReportHeader = () => {
         광고 제보하기
       </button>
       {isAdReportModalOpen && (
-        <AdReportModal onClose={() => setIsAdReportModalOpen(false)} />
+        <AdReportModal
+          onClose={() => setIsAdReportModalOpen(false)}
+          channelId={channelId}
+        />
       )}
     </div>
   );
