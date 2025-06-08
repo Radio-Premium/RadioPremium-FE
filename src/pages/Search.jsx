@@ -21,7 +21,7 @@ const Search = () => {
     }
 
     const result = radioChannelList.filter(({ name }) =>
-      name.includes(upperKeyword)
+      name.toUpperCase().includes(upperKeyword)
     );
 
     setFilteredList(result);
