@@ -11,9 +11,10 @@ const Search = () => {
   );
   const keyword = useSearchStore((state) => state.keyword);
   const [filteredList, setFilteredList] = useState([]);
+  const trimmedKeyword = keyword.trim();
 
   useEffect(() => {
-    const upperKeyword = keyword.toUpperCase().trim();
+    const upperKeyword = trimmedKeyword.toUpperCase();
 
     if (!upperKeyword) {
       setFilteredList([]);
@@ -25,10 +26,10 @@ const Search = () => {
     );
 
     setFilteredList(result);
-  }, [keyword, radioChannelList]);
+  }, [trimmedKeyword, radioChannelList]);
 
-  const isEmptyInput = keyword.trim() === "";
-  const isEmptyResult = keyword && filteredList.length === 0;
+  const isEmptyInput = trimmedKeyword === "";
+  const isEmptyResult = trimmedKeyword && filteredList.length === 0;
 
   return (
     <div className="w-full px-4">
