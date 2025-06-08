@@ -1,35 +1,18 @@
-import { useRef } from "react";
-
 import MainPauseIcon from "@/assets/svgs/icon-main-pause.svg?react";
 import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
-import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
-import { useChannelStore } from "@/store/useChannelStore";
-import { useUserStore } from "@/store/useUserStore";
-import controlStreamingPlayback from "@/utils/playControl";
+import { SETTING_TITLES, SETTING_TYPES } from "@/constants/settingOptions";
+import useChannelPlayback from "@/hooks/useChannelPlayback";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
-  const { selectedChannelId, radioChannelList, isPlaying, setIsPlaying } =
-    useChannelStore();
-  const { settings } = useUserStore();
-  const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
-
-  const selectedChannel = radioChannelList.find(
-    ({ id }) => id === selectedChannelId
-  );
+  const { videoId, selectedChannel, isPlaying, handlePlayPause } =
+    useChannelPlayback();
   const { name, logoUrl } = selectedChannel;
-
-  const videoId = useRef(null);
 
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
-
-  const handlePlayPause = () => {
-    controlStreamingPlayback(videoId, selectedChannelId, isPlaying, isAdDetect);
-    setIsPlaying((prev) => !prev);
-  };
 
   return (
     <div className="relative mx-auto flex h-[calc(100vh-80px)] max-w-md flex-col px-4 pb-28">
