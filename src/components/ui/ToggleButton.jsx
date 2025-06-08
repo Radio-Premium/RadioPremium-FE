@@ -26,7 +26,7 @@ const ToggleButton = ({ size = "m", checked, onToggle, disabled = false }) => {
             ? "bg-black"
             : "bg-neutral-300"
       } ${buttonSize}`}
-      onClick={disabled ? undefined : onToggle}
+      onClick={onToggle}
     >
       <div
         className={`absolute top-1 left-1 rounded-full bg-white duration-400 ${
