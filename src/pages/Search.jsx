@@ -10,31 +10,31 @@ const Search = () => {
     (state) => state.interestChannelIds
   );
   const keyword = useSearchStore((state) => state.keyword);
-  const [filteredList, setFilteredList] = useState([]);
+  const [filteredChannelList, setFilteredChannelList] = useState([]);
   const trimmedKeyword = keyword.trim();
 
   useEffect(() => {
     const upperKeyword = trimmedKeyword.toUpperCase();
 
     if (!upperKeyword) {
-      setFilteredList([]);
+      setFilteredChannelList([]);
       return;
     }
 
-    const result = radioChannelList.filter(({ name }) =>
+    const searchResults = radioChannelList.filter(({ name }) =>
       name.toUpperCase().includes(upperKeyword)
     );
 
-    setFilteredList(result);
+    setFilteredChannelList(searchResults);
   }, [trimmedKeyword, radioChannelList]);
 
   const isEmptyInput = trimmedKeyword === "";
-  const isEmptyResult = trimmedKeyword && filteredList.length === 0;
+  const isEmptyResult = trimmedKeyword && filteredChannelList.length === 0;
 
   return (
     <div className="w-full px-4">
       <ul className="mt-6">
-        {filteredList.map(({ id, name, logoUrl }) => (
+        {filteredChannelList.map(({ id, name, logoUrl }) => (
           <SearchResultListItem
             key={id}
             channelId={id}
