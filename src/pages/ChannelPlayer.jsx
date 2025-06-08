@@ -6,13 +6,14 @@ import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
 import { useChannelStore } from "@/store/useChannelStore";
+import { useUserStore } from "@/store/useUserStore";
 import controlStreamingPlayback from "@/utils/playControl";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
-  const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
-  const radioChannelList = useChannelStore((state) => state.radioChannelList);
-  const isPlaying = useChannelStore((state) => state.isPlaying);
-  const setIsPlaying = useChannelStore((state) => state.setIsPlaying);
+  const { selectedChannelId, radioChannelList, isPlaying, setIsPlaying } =
+    useChannelStore();
+  const { settings } = useUserStore();
+  const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
   const channel = radioChannelList.find(
     (channel) => channel.id === selectedChannelId
   );
@@ -25,7 +26,7 @@ const ChannelPlayer = ({ isChannelChanged }) => {
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
 
   const handlePlayPause = () => {
-    controlStreamingPlayback(videoId, selectedChannelId, isPlaying);
+    controlStreamingPlayback(videoId, selectedChannelId, isPlaying, isAdDetect);
     setIsPlaying((prev) => !prev);
   };
 
