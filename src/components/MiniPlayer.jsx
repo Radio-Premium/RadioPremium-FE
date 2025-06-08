@@ -13,12 +13,13 @@ const MiniPlayer = ({ closePlayer }) => {
     useChannelStore();
   const { settings } = useUserStore();
   const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
+
   const channel = radioChannelList.find(
     (channel) => channel.id === selectedChannelId
   );
-  const videoId = useRef(null);
-
   const { name, logoUrl } = channel;
+
+  const videoId = useRef(null);
 
   const handlePlayPause = () => {
     controlStreamingPlayback(videoId, selectedChannelId, isPlaying, isAdDetect);

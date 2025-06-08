@@ -14,12 +14,13 @@ const ChannelPlayer = ({ isChannelChanged }) => {
     useChannelStore();
   const { settings } = useUserStore();
   const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
+
   const channel = radioChannelList.find(
     (channel) => channel.id === selectedChannelId
   );
-  const videoId = useRef(null);
-
   const { name, logoUrl } = channel;
+
+  const videoId = useRef(null);
 
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
