@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import ToggleCheckbox from "@/components/ToggleCheckbox";
 import Button from "@/components/ui/Button";
@@ -13,7 +13,7 @@ import useUserId from "@/hooks/useUserId";
 const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
   const [selectedParentOption, setSelectedParentOption] = useState(null);
   const [selectedChildOption, setSelectedChildOption] = useState(null);
-  const [userAdPhrase, setUserAdPhrase] = useState("");
+  const userAdPhrase = useRef("");
 
   const submitAdReport = useSubmitAdReport();
   const userId = useUserId();
@@ -37,7 +37,7 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
     await submitAdReport({
       userId: Number(userId),
       isAd,
-      detectedAdPhrase: userAdPhrase || null,
+      detectedAdPhrase: userAdPhrase.current || null,
       channelId,
     });
 
@@ -76,8 +76,8 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
             id="adPhraseInput"
             type="text"
             placeholder="EX) '하핑하핑'"
-            value={userAdPhrase}
-            onChange={(e) => setUserAdPhrase(e.target.value)}
+            defaultValue=""
+            onChange={(e) => (userAdPhrase.current = e.target.value)}
             className="mb-4 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
           />
           <div className="flex justify-end gap-x-2">
