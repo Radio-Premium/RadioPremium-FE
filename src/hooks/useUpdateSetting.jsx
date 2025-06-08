@@ -1,5 +1,6 @@
 import axios from "axios";
 
+import { SETTING_TYPES } from "@/constants/settingOptions";
 import { useUserStore } from "@/store/useUserStore";
 
 const useUpdateSetting = (type) => {
@@ -15,6 +16,10 @@ const useUpdateSetting = (type) => {
       ...settings,
       [type]: !settings[type],
     };
+
+    if (type === SETTING_TYPES.AD_DETECT && !updatedSettings.isAdDetect) {
+      updatedSettings.isReturnChannel = false;
+    }
 
     try {
       await axios.put(

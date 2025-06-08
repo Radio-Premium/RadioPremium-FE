@@ -13,13 +13,18 @@ const toggleSize = {
   },
 };
 
-const ToggleButton = ({ size = "m", checked, onToggle }) => {
+const ToggleButton = ({ size = "m", checked, onToggle, disabled = false }) => {
   const { buttonSize, thumbSize, activeTranslate } = toggleSize[size];
 
   return (
     <Button
+      disabled={disabled}
       className={`relative cursor-pointer rounded-full transition-colors duration-200 ${
-        checked ? "bg-black" : "bg-neutral-300"
+        disabled
+          ? "cursor-not-allowed bg-neutral-200"
+          : checked
+            ? "bg-black"
+            : "bg-neutral-300"
       } ${buttonSize}`}
       onClick={onToggle}
     >
