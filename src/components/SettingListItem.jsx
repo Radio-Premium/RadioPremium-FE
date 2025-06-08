@@ -1,4 +1,5 @@
 import ToggleButton from "@/components/ui/ToggleButton";
+import { SETTING_TYPES } from "@/constants/settingOptions";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
 import { useUserStore } from "@/store/useUserStore";
 
@@ -33,7 +34,9 @@ const SettingListItem = ({ type, title, explanations }) => {
         <ToggleButton
           checked={settings[type]}
           onToggle={handleToggle}
-          disabled={type === "isReturnChannel" && !settings.isAdDetect}
+          disabled={
+            type === SETTING_TYPES.RETURN_CHANNEL && !settings.isAdDetect
+          }
         />
       </div>
     </li>
