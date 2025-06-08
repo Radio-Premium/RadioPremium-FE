@@ -1,11 +1,6 @@
 export const SETTING_TYPES = {
-  AD_DETECT: "AD_DETECT",
-  RETURN_CHANNEL: "RETURN_CHANNEL",
-};
-
-export const SETTING_CAMEL_TYPES = {
-  [SETTING_TYPES.AD_DETECT]: "isAdDetect",
-  [SETTING_TYPES.RETURN_CHANNEL]: "isReturnChannel",
+  AD_DETECT: "isAdDetect",
+  RETURN_CHANNEL: "isReturnChannel",
 };
 
 export const SETTING_TITLES = {

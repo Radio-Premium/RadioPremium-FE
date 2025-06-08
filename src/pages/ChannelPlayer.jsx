@@ -4,11 +4,7 @@ import MainPauseIcon from "@/assets/svgs/icon-main-pause.svg?react";
 import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
-import {
-  SETTING_TYPES,
-  SETTING_CAMEL_TYPES,
-  SETTING_TITLES,
-} from "@/constants/settingOptions";
+import { SETTING_TYPES, SETTING_TITLES } from "@/constants/settingOptions";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
 import { useChannelStore } from "@/store/useChannelStore";
 import { useUserStore } from "@/store/useUserStore";
@@ -32,8 +28,8 @@ const ChannelPlayer = ({ isChannelChanged }) => {
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
 
   const settingType = isChannelChanged
-    ? SETTING_CAMEL_TYPES[SETTING_TYPES.RETURN_CHANNEL]
-    : SETTING_CAMEL_TYPES[SETTING_TYPES.AD_DETECT];
+    ? SETTING_TYPES.RETURN_CHANNEL
+    : SETTING_TYPES.AD_DETECT;
 
   const updateSetting = useUpdateSetting(settingType);
 

@@ -2,7 +2,6 @@ import SettingListItem from "@/components/SettingListItem";
 import TabBar from "@/components/TabBar";
 import {
   SETTING_TYPES,
-  SETTING_CAMEL_TYPES,
   SETTING_TITLES,
   SETTING_EXPLANATIONS,
 } from "@/constants/settingOptions";
@@ -18,7 +17,7 @@ const Settings = () => {
           {settingTypes.map((type) => (
             <SettingListItem
               key={type}
-              type={SETTING_CAMEL_TYPES[type]}
+              type={type}
               title={SETTING_TITLES[type]}
               explanations={SETTING_EXPLANATIONS[type]}
             />
