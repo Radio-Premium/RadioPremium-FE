@@ -16,6 +16,10 @@ const useUpdateSetting = (type) => {
       [type]: !settings[type],
     };
 
+    if (type === "isAdDetect" && !updatedSettings.isAdDetect) {
+      updatedSettings.isReturnChannel = false;
+    }
+
     try {
       await axios.put(
         `${import.meta.env.VITE_API_URL}/users/${userId}/settings`,

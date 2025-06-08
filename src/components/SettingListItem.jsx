@@ -30,7 +30,11 @@ const SettingListItem = ({ type, title, explanations }) => {
         )}
       </div>
       <div className="my-auto ml-auto">
-        <ToggleButton checked={settings[type]} onToggle={handleToggle} />
+        <ToggleButton
+          checked={settings[type]}
+          onToggle={handleToggle}
+          disabled={type === "isReturnChannel" && !settings.isAdDetect}
+        />
       </div>
     </li>
   );
