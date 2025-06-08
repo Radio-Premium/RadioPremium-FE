@@ -7,13 +7,14 @@ let hlsInstance = null;
 const controlStreamingPlayback = async (
   videoRef,
   selectedChannelId,
-  isPlaying
+  isPlaying,
+  isAdDetect
 ) => {
   const video = videoRef.current;
 
   if (!isPlaying) {
     try {
-      const { data } = await getChannelInfo(selectedChannelId);
+      const { data } = await getChannelInfo(selectedChannelId, isAdDetect);
       const url = data.url;
 
       if (hlsInstance) {
