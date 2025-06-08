@@ -26,7 +26,6 @@ const useChannelPlayback = () => {
     videoId,
     selectedChannel,
     isPlaying,
-    settings,
     handlePlayPause,
   };
 };

@@ -5,9 +5,10 @@ import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TITLES, SETTING_TYPES } from "@/constants/settingOptions";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
+import { useUserStore } from "@/store/useUserStore";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
-  const { videoId, selectedChannel, isPlaying, settings, handlePlayPause } =
+  const { videoId, selectedChannel, isPlaying, handlePlayPause } =
     useChannelPlayback();
   const { name, logoUrl } = selectedChannel;
 
@@ -18,6 +19,8 @@ const ChannelPlayer = ({ isChannelChanged }) => {
   const settingType = isChannelChanged
     ? SETTING_TYPES.RETURN_CHANNEL
     : SETTING_TYPES.AD_DETECT;
+
+  const { settings } = useUserStore();
 
   const updateSetting = useUpdateSetting(settingType);
 
