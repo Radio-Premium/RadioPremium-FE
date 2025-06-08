@@ -5,7 +5,7 @@ import {
   SETTING_CAMEL_TYPES,
   SETTING_TITLES,
   SETTING_EXPLANATIONS,
-} from "@/constants/settingsData";
+} from "@/constants/settingOptions";
 
 const Settings = () => {
   const settingTypes = Object.values(SETTING_TYPES);
