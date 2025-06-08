@@ -71,9 +71,11 @@ const AdReportModal = ({
         </div>
       </div>
       <form className="mt-5 w-full">
-        <label className="text-md block text-left text-gray-600">
-          📌광고라고 판단되는 멘트를 입력해주세요 (선택)
-        </label>
+        <div className="w-full">
+          <label className="block w-full text-left text-sm whitespace-nowrap text-gray-600">
+            📌 광고로 판단되는 멘트를 입력해주세요 (선택)
+          </label>
+        </div>
         <input
           type="text"
           placeholder="EX) '하핑하핑'"
