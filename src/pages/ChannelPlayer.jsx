@@ -7,10 +7,10 @@ import useChannelPlayback from "@/hooks/useChannelPlayback";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
-  const { videoId, selectedChannel, isPlaying, handlePlayPause } =
+  const { videoId, selectedChannel, isPlaying, settings, handlePlayPause } =
     useChannelPlayback();
   const { name, logoUrl } = selectedChannel;
-  
+
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
     : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
