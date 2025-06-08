@@ -15,7 +15,7 @@ const MiniPlayer = ({ closePlayer }) => {
   const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
   const selectedChannel = radioChannelList.find(
-    (channel) => channel.id === selectedChannelId
+    ({ id }) => id === selectedChannelId
   );
   const { name, logoUrl } = selectedChannel;
 
