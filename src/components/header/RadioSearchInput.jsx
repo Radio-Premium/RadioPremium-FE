@@ -2,9 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import SearchThinIcon from "@/assets/svgs/icon-search-thin.svg?react";
+import { useSearchStore } from "@/store/useSearchStore";
 
 const RadioSearchInput = () => {
   const navigate = useNavigate();
+  const keyword = useSearchStore((state) => state.keyword);
+  const setKeyword = useSearchStore((state) => state.setKeyword);
   const [isInputClicked, setIsInputClicked] = useState(false);
 
   return (
@@ -13,8 +16,10 @@ const RadioSearchInput = () => {
         <div className="flex h-11 flex-1 items-center rounded-4xl bg-neutral-200 px-4">
           <SearchThinIcon className="mr-2" />
           <input
+            value={keyword}
             onFocus={() => setIsInputClicked(true)}
             onBlur={() => setIsInputClicked(false)}
+            onChange={(e) => setKeyword(e.target.value)}
             type="text"
             placeholder={!isInputClicked && "Search by radio name"}
             className="w-full text-sm font-semibold text-neutral-800 outline-none"
