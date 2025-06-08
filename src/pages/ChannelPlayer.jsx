@@ -15,10 +15,10 @@ const ChannelPlayer = ({ isChannelChanged }) => {
   const { settings } = useUserStore();
   const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
-  const channel = radioChannelList.find(
+  const selectedChannel = radioChannelList.find(
     (channel) => channel.id === selectedChannelId
   );
-  const { name, logoUrl } = channel;
+  const { name, logoUrl } = selectedChannel;
 
   const videoId = useRef(null);
 
