@@ -7,7 +7,7 @@ import { usePlayingStore } from "@/store/usePlayingStore";
 import { getGlobalVideo } from "@/utils/videoElement";
 
 const MiniPlayer = () => {
-  const { videoId, selectedChannel, isPlaying, handlePlayPause } =
+  const { selectedChannel, isPlaying, handlePlayPause } =
     useChannelPlayback("mini");
   const { closeMiniPlayer } = useMiniPlayerStore();
   const { setIsPlaying } = usePlayingStore();
@@ -27,7 +27,6 @@ const MiniPlayer = () => {
         <img className="ml-2 h-16 w-16" src={logoUrl} alt={`${name} 썸네일`} />
         <p className="ml-2 text-sm font-black">{name}</p>
       </div>
-      <video ref={videoId} className="hidden" />
       <div className="flex items-center gap-3">
         {!isPlaying ? (
           <PlayIcon
