@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { SETTING_TYPES } from "@/constants/settingOptions";
 import { useChannelStore } from "@/store/useChannelStore";
 import { useUserStore } from "@/store/useUserStore";
-import controlStreamingPlayback from "@/utils/playControl";
+import { controlStreamingPlayback } from "@/utils/playControl";
 
 const useChannelPlayback = () => {
   const { selectedChannelId, radioChannelList, isPlaying, setIsPlaying } =
