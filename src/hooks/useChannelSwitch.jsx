@@ -1,11 +1,16 @@
 import { useCallback } from "react";
 
 import { getRandomNoAdChannel } from "@/apis/radioChannels";
+import { SETTING_TYPES } from "@/constants/settingOptions";
 import { useChannelStore } from "@/store/useChannelStore";
+import { useUserStore } from "@/store/useUserStore";
+import { controlStreamingSwitch } from "@/utils/playControl";
 
-const useChannelSwitch = () => {
+const useChannelSwitch = (videoRef) => {
   const prevChannelId = useChannelStore((state) => state.prevChannelId);
   const setPrevChannelId = useChannelStore((state) => state.setPrevChannelId);
+  const { settings } = useUserStore();
+  const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
   const handleChannelSwitch = useCallback(
     async (isAd) => {
@@ -22,13 +27,13 @@ const useChannelSwitch = () => {
           channelId = prevChannelId;
           setPrevChannelId(null);
         }
-        // TODO: 멈춤없이 라디오 음성을 연속 재생하려면 네비게이팅이 아닌 video의 src 속성을 변경해야 함
-        // navigate(`/channel/${channelId}`);
+
+        await controlStreamingSwitch(videoRef, channelId, isAdDetect);
       } catch (error) {
         console.error("switch failed: ", error);
       }
     },
-    [prevChannelId, setPrevChannelId]
+    [prevChannelId, setPrevChannelId, isAdDetect, videoRef]
   );
 
   return handleChannelSwitch;
