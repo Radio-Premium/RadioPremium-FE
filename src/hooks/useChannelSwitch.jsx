@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 
+import { getRandomNoAdChannel } from "@/apis/radioChannels";
 import { useChannelStore } from "@/store/useChannelStore";
 
 const useChannelSwitch = () => {
@@ -11,9 +12,12 @@ const useChannelSwitch = () => {
       try {
         let channelId = 0;
         if (isAd) {
-          // TODO: 광고 없는 채널 id 랜덤으로 불러오기
-          channelId = 3;
-          setPrevChannelId(channelId);
+          try {
+            channelId = await getRandomNoAdChannel();
+            setPrevChannelId(channelId);
+          } catch (error) {
+            console.error("fetch randomNoAdchannel failed", error);
+          }
         } else {
           channelId = prevChannelId;
           setPrevChannelId(null);
