@@ -18,7 +18,8 @@ const useChannelSwitch = (videoRef) => {
         let channelId = 0;
         if (isAd) {
           try {
-            channelId = await getRandomNoAdChannel();
+            const { data } = await getRandomNoAdChannel();
+            channelId = data.id;
             setPrevChannelId(channelId);
           } catch (error) {
             console.error("fetch randomNoAdchannel failed", error);
