@@ -2,11 +2,24 @@ import CloseIcon from "@/assets/svgs/icon-close.svg?react";
 import PauseIcon from "@/assets/svgs/icon-mini-pause.svg?react";
 import PlayIcon from "@/assets/svgs/icon-mini-play.svg?react";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
+import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
+import { usePlayingStore } from "@/store/usePlayingStore";
+import { getGlobalVideo } from "@/utils/videoElement";
 
-const MiniPlayer = ({ closePlayer }) => {
+const MiniPlayer = () => {
   const { videoId, selectedChannel, isPlaying, handlePlayPause } =
-    useChannelPlayback();
+    useChannelPlayback("mini");
+  const { closeMiniPlayer } = useMiniPlayerStore();
+  const { setIsPlaying } = usePlayingStore();
   const { name, logoUrl } = selectedChannel;
+
+  const handleClose = () => {
+    const video = getGlobalVideo();
+    video.pause();
+    video.src = "";
+    setIsPlaying(false);
+    closeMiniPlayer();
+  };
 
   return (
     <div className="absolute bottom-0 flex h-20 w-full justify-between rounded-t-4xl bg-white px-4 shadow-[0_-6px_9px_rgba(0,0,0,0.3)]">
@@ -24,7 +37,7 @@ const MiniPlayer = ({ closePlayer }) => {
         ) : (
           <PauseIcon className="cursor-pointer" onClick={handlePlayPause} />
         )}
-        <CloseIcon className="cursor-pointer" onClick={closePlayer} />
+        <CloseIcon className="cursor-pointer" onClick={handleClose} />
       </div>
     </div>
   );
