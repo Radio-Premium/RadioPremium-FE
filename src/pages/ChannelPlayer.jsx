@@ -3,6 +3,7 @@ import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TITLES, SETTING_TYPES } from "@/constants/settingOptions";
+import useAdKeywordsSocketListener from "@/hooks/useAdKeywordsSocketListener";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
 import { useUserStore } from "@/store/useUserStore";
@@ -11,6 +12,8 @@ const ChannelPlayer = ({ isChannelChanged }) => {
   const { videoId, selectedChannel, isPlaying, handlePlayPause } =
     useChannelPlayback();
   const { name, logoUrl } = selectedChannel;
+
+  useAdKeywordsSocketListener(videoId);
 
   const buttonLabel = isChannelChanged
     ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
