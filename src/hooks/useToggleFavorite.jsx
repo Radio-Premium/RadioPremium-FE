@@ -7,10 +7,10 @@ import { useChannelStore } from "@/store/useChannelStore";
 
 const useToggleFavorite = () => {
   const { interestChannelIds, setInterestChannelIds } = useChannelStore();
-  const userId = useUserId();
+  const userId = Number(useUserId());
 
   const toggleFavorite = async (channelId) => {
-    if (!userId || !channelId) {
+    if (typeof userId !== "number" || typeof channelId !== "number") {
       return;
     }
 
