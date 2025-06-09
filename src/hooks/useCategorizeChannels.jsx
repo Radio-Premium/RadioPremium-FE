@@ -15,8 +15,8 @@ const useCategorizeChannels = () => {
       return;
     }
 
-    const favoriteList = radioChannelList.filter((channelInfo) =>
-      interestChannelIds.includes(channelInfo.id)
+    const favoriteList = interestChannelIds.map((id) =>
+      radioChannelList.find((channelInfo) => channelInfo.id === id)
     );
     setFavoriteChannelList(favoriteList);
 
