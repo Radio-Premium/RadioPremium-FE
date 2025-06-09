@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import useChannelSwitch from "@/hooks/useChannelSwitch";
 import socket from "@/sockets/socketClient";
 
-const useAdKeywordsSocketListener = () => {
-  const handleChannelSwitch = useChannelSwitch();
+const useAdKeywordsSocketListener = (videoId) => {
+  const handleChannelSwitch = useChannelSwitch(videoId);
 
   useEffect(() => {
     socket.on("connect", () => {
