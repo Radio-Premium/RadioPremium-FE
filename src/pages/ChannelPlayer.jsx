@@ -10,7 +10,7 @@ import { useUserStore } from "@/store/useUserStore";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   const { videoId, selectedChannel, isPlaying, handlePlayPause } =
-    useChannelPlayback();
+    useChannelPlayback("full");
   const { name, logoUrl } = selectedChannel;
 
   useAdKeywordsSocketListener(videoId);
@@ -50,7 +50,6 @@ const ChannelPlayer = ({ isChannelChanged }) => {
             onToggle={handleToggle}
           />
         </div>
-        <video ref={videoId} className="hidden" />
         <Button className="mt-12" onClick={handlePlayPause}>
           {isPlaying ? (
             <MainPauseIcon className="h-[60px] w-[60px] sm:h-[75px] sm:w-[75px]" />

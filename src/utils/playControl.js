@@ -25,12 +25,11 @@ export const startStreamingPlay = (video, url) => {
 };
 
 export const controlStreamingPlayback = async (
-  videoRef,
+  video,
   channelId,
   isPlaying,
   isAdDetect
 ) => {
-  const video = videoRef.current;
   if (!isPlaying) {
     try {
       const { data } = await getChannelInfo(channelId, isAdDetect, userId);
@@ -43,12 +42,7 @@ export const controlStreamingPlayback = async (
   }
 };
 
-export const controlStreamingSwitch = async (
-  videoRef,
-  channelId,
-  isAdDetect
-) => {
-  const video = videoRef.current;
+export const controlStreamingSwitch = async (video, channelId, isAdDetect) => {
   try {
     const { data } = await getChannelInfo(channelId, isAdDetect, userId);
     startStreamingPlay(video, data.url);
