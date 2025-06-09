@@ -37,10 +37,10 @@ const useChannelPlayback = (mode) => {
   };
 
   return {
+    videoId: video,
     selectedChannel,
     isPlaying: isCurrentPlaying,
     handlePlayPause,
-    videoId: video,
   };
 };
 
