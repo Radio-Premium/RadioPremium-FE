@@ -2,7 +2,7 @@ const ChannelSection = ({ title, children, addTopMargin, heightClass }) => {
   return (
     <section>
       <h2
-        className={`mb-2 text-[16px] font-semibold ${addTopMargin ? "mt-6" : ""}`}
+        className={`mb-2 text-base font-semibold ${addTopMargin ? "mt-6" : ""}`}
       >
         {title}
       </h2>

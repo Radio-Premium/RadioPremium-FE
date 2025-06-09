@@ -17,14 +17,11 @@ const SettingListItem = ({ type, title, explanations }) => {
         <h2 className="text-lg font-semibold">{title}</h2>
         {explanations.map((explanation, index) =>
           index === 0 ? (
-            <p
-              key={index}
-              className="mt-1 mb-[-2px] text-[14px] text-[#888888]"
-            >
+            <p key={index} className="mt-1 mb-[-2px] text-sm text-[#888888]">
               {explanation}
             </p>
           ) : (
-            <p key={index} className="text-[14px] text-[#888888]">
+            <p key={index} className="text-sm text-[#888888]">
               {explanation}
             </p>
           )
