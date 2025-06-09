@@ -9,7 +9,9 @@ const useAdKeywordsSocketListener = (videoId) => {
   const userId = useUserId();
 
   useEffect(() => {
-    if (!userId) return;
+    if (!userId) {
+      return;
+    }
 
     const handleConnect = () => {
       console.log("connected");
