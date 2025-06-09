@@ -1,6 +1,6 @@
 import CloseIcon from "@/assets/svgs/icon-close.svg?react";
 import PauseIcon from "@/assets/svgs/icon-mini-pause.svg?react";
-import PlayIcon from "@/assets/svgs/icon-mini-player.svg?react";
+import PlayIcon from "@/assets/svgs/icon-mini-play.svg?react";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 
 const MiniPlayer = ({ closePlayer }) => {
