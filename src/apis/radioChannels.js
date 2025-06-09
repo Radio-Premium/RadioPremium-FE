@@ -1,8 +1,8 @@
 import axiosInstance from "@/apis/axiosInstance";
 
-export const getChannelInfo = (channelId, isAdDetect) =>
+export const getChannelInfo = (channelId, isAdDetect, userId) =>
   axiosInstance.get(`/radio-channels/${channelId}`, {
-    params: { isAdDetect },
+    params: { isAdDetect, userId },
   });
 
 export const getRandomNoAdChannel = () =>

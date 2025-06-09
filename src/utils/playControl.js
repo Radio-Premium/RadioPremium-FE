@@ -3,6 +3,7 @@ import Hls from "hls.js";
 import { getChannelInfo } from "@/apis/radioChannels";
 
 let hlsInstance = null;
+const userId = localStorage.getItem("userId");
 
 export const startStreamingPlay = (video, url) => {
   if (hlsInstance) {
@@ -32,7 +33,7 @@ export const controlStreamingPlayback = async (
   const video = videoRef.current;
   if (!isPlaying) {
     try {
-      const { data } = await getChannelInfo(channelId, isAdDetect);
+      const { data } = await getChannelInfo(channelId, isAdDetect, userId);
       startStreamingPlay(video, data.url);
     } catch (error) {
       console.error("fetch channelInfo failed", error);
@@ -49,7 +50,7 @@ export const controlStreamingSwitch = async (
 ) => {
   const video = videoRef.current;
   try {
-    const { data } = await getChannelInfo(channelId, isAdDetect);
+    const { data } = await getChannelInfo(channelId, isAdDetect, userId);
     startStreamingPlay(video, data.url);
   } catch (error) {
     console.error("fetch channelInfo failed", error);
