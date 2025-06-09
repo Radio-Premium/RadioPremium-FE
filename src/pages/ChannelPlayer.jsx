@@ -10,7 +10,7 @@ import { useUserStore } from "@/store/useUserStore";
 
 const ChannelPlayer = ({ isChannelChanged }) => {
   const { videoId, selectedChannel, isPlaying, handlePlayPause } =
-    useChannelPlayback();
+    useChannelPlayback("full");
   const { name, logoUrl } = selectedChannel;
 
   useAdKeywordsSocketListener(videoId);
