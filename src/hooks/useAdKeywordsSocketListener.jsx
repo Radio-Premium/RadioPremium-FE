@@ -9,23 +9,35 @@ const useAdKeywordsSocketListener = (videoId) => {
   const userId = useUserId();
 
   useEffect(() => {
-    socket.on("connect", () => {
+    if (!userId) {
+      return;
+    }
+
+    const handleConnect = () => {
       console.log("connected");
       socket.emit("registerUser", { userId });
-    });
+    };
 
-    socket.on("radioText", ({ isAd }) => {
+    const handleRadioText = ({ isAd }) => {
       handleChannelSwitch(isAd);
-    });
+    };
 
-    socket.on("disconnect", () => {
-      console.log("disconnect");
-    });
+    const handleDisconnect = () => {
+      console.log("disconnected");
+    };
+
+    socket.on("connect", handleConnect);
+    socket.on("radioText", handleRadioText);
+    socket.on("disconnect", handleDisconnect);
+
+    if (socket.connected) {
+      handleConnect();
+    }
 
     return () => {
-      socket.off("connect");
-      socket.off("radioText");
-      socket.off("disconnect");
+      socket.off("connect", handleConnect);
+      socket.off("radioText", handleRadioText);
+      socket.off("disconnect", handleDisconnect);
     };
   }, [handleChannelSwitch, userId]);
 };
