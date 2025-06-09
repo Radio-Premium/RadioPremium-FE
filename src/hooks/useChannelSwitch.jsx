@@ -24,6 +24,10 @@ const useChannelSwitch = (videoRef) => {
             console.error("fetch randomNoAdchannel failed", error);
           }
         } else {
+          if (prevChannelId == null) {
+            return;
+          }
+
           channelId = prevChannelId;
           setPrevChannelId(null);
         }
