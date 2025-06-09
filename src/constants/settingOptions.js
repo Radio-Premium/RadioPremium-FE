@@ -10,7 +10,7 @@ export const SETTING_TITLES = {
 
 export const SETTING_EXPLANATIONS = {
   [SETTING_TYPES.AD_DETECT]: [
-    "현재 채널에서 광고를 자동으로 감지합니다.",
+    "현재 채널에서 광고를 자동 감지합니다.",
     "광고가 감지되면 다른 채널로 이동합니다.",
   ],
   [SETTING_TYPES.RETURN_CHANNEL]: [
