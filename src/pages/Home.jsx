@@ -15,10 +15,10 @@ const Home = () => {
     <>
       <TabBar />
       <div className="px-4 pt-8">
-        <ChannelSection title="Favorite Channel" heightClass="h-60">
+        <ChannelSection title="Favorite Channel" height="60">
           <FavoriteChannelList channelList={favoriteChannelList} />
         </ChannelSection>
-        <ChannelSection title="Channel" addTopMargin heightClass="h-80">
+        <ChannelSection title="Channel" marginTop="8" height="80">
           {otherChannelList.map(({ id, name, logoUrl }) => (
             <ChannelListItem
               key={id}
