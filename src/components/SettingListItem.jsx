@@ -13,18 +13,15 @@ const SettingListItem = ({ type, title, explanations }) => {
 
   return (
     <li className="my-4 flex h-[100px] w-full min-w-80 rounded-md bg-gray-100 px-4 pt-4">
-      <div className="w-[272px]">
+      <div className="w-[280px]">
         <h2 className="text-lg font-semibold">{title}</h2>
         {explanations.map((explanation, index) =>
           index === 0 ? (
-            <p
-              key={index}
-              className="mt-1 mb-[-4px] text-[14px] text-[#888888]"
-            >
+            <p key={index} className="mt-1 mb-[-2px] text-sm text-[#888888]">
               {explanation}
             </p>
           ) : (
-            <p key={index} className="text-[14px] text-[#888888]">
+            <p key={index} className="text-sm text-[#888888]">
               {explanation}
             </p>
           )

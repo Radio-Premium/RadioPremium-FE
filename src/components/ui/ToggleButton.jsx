@@ -7,9 +7,9 @@ const toggleSize = {
     activeTranslate: "translate-x-6",
   },
   m: {
-    buttonSize: "h-8 w-16",
+    buttonSize: "h-8 w-15",
     thumbSize: "h-6 w-6",
-    activeTranslate: "translate-x-8",
+    activeTranslate: "translate-x-7",
   },
 };
 
