@@ -13,10 +13,10 @@ const useControlStreamingSwitch = () => {
     setIsChannelChanged(true);
   };
 
-  const controlStreamingSwitch = async (video, channelId, isAdDetect) => {
+  const controlStreamingSwitch = async (video, channelId) => {
     const userId = localStorage.getItem("userId");
     try {
-      const { data } = await getChannelInfo(channelId, isAdDetect, userId);
+      const { data } = await getChannelInfo(channelId, userId);
       startStreamingPlay(video, data.url);
       updateChannelState(channelId);
     } catch (error) {
