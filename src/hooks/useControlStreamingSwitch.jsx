@@ -9,13 +9,17 @@ const useControlStreamingSwitch = () => {
   const { setSelectedChannelId, setIsChannelChanged } = useChannelStore();
   const { setPlayingChannelId } = useMiniPlayerStore();
 
+  const updateChannelState = (channelId) => {
+    setSelectedChannelId(channelId);
+    setPlayingChannelId(channelId);
+    setIsChannelChanged(true);
+  };
+
   const controlStreamingSwitch = async (video, channelId, isAdDetect) => {
     try {
       const { data } = await getChannelInfo(channelId, isAdDetect, userId);
       startStreamingPlay(video, data.url);
-      setSelectedChannelId(channelId);
-      setPlayingChannelId(channelId);
-      setIsChannelChanged(true);
+      updateChannelState(channelId);
     } catch (error) {
       console.error("fetch channelInfo failed", error);
     }
