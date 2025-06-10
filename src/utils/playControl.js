@@ -25,11 +25,23 @@ export const startStreamingPlay = (video, url) => {
   }
 };
 
-export const controlStreamingPlayback = async (video, channelId, isPlaying) => {
+export const controlStreamingPlayback = async (
+  video,
+  channelId,
+  isPlaying,
+  isAdDetect
+) => {
   if (!isPlaying) {
     try {
       const { data } = await getChannelInfo(channelId, userId);
       const streamingUrl = data.url;
+      if (isAdDetect) {
+        await axios.post("http://localhost:3000/whisper", {
+          streamingUrl,
+          userId,
+          channelId,
+        });
+      }
       startStreamingPlay(video, streamingUrl);
     } catch (error) {
       console.error("fetch channelInfo failed", error);
