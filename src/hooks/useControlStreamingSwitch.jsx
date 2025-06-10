@@ -3,8 +3,6 @@ import { useChannelStore } from "@/store/useChannelStore";
 import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
 import { startStreamingPlay } from "@/utils/playControl";
 
-const userId = localStorage.getItem("userId");
-
 const useControlStreamingSwitch = () => {
   const { setSelectedChannelId, setIsChannelChanged } = useChannelStore();
   const { setPlayingChannelId } = useMiniPlayerStore();
@@ -16,6 +14,7 @@ const useControlStreamingSwitch = () => {
   };
 
   const controlStreamingSwitch = async (video, channelId, isAdDetect) => {
+    const userId = localStorage.getItem("userId");
     try {
       const { data } = await getChannelInfo(channelId, isAdDetect, userId);
       startStreamingPlay(video, data.url);
