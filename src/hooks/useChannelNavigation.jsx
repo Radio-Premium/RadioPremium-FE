@@ -7,9 +7,13 @@ const useChannelNavigation = () => {
   const setSelectedChannelId = useChannelStore(
     (state) => state.setSelectedChannelId
   );
+  const setIsChannelChanged = useChannelStore(
+    (state) => state.setIsChannelChanged
+  );
 
   const goToChannelPlayer = (channelId) => {
     setSelectedChannelId(channelId);
+    setIsChannelChanged(false);
     navigate("/channel-player");
   };
 
