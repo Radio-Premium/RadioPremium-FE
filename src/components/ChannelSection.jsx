@@ -1,11 +1,9 @@
 const ChannelSection = ({ title, children, marginTop, height }) => {
   return (
     <section>
-      <h2 className={`mb-2 text-base font-semibold mt-${marginTop}`}>
-        {title}
-      </h2>
+      <h2 className={`mb-2 text-base font-semibold ${marginTop}`}>{title}</h2>
       <ul
-        className={`scrollbar-hide flex w-full flex-col items-center overflow-scroll h-${height}`}
+        className={`scrollbar-hide flex w-full flex-col items-center overflow-scroll ${height}`}
       >
         {children}
       </ul>
