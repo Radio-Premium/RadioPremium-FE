@@ -6,25 +6,23 @@ import { SETTING_TITLES, SETTING_TYPES } from "@/constants/settingOptions";
 import useAdKeywordsSocketListener from "@/hooks/useAdKeywordsSocketListener";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
+import { useChannelStore } from "@/store/useChannelStore";
 import { useUserStore } from "@/store/useUserStore";
 
-const ChannelPlayer = ({ isChannelChanged }) => {
+const ChannelPlayer = () => {
   const { videoId, selectedChannel, isPlaying, handlePlayPause } =
     useChannelPlayback("full");
-  const { name, logoUrl } = selectedChannel;
-
+  const isChannelChanged = useChannelStore((state) => state.isChannelChanged);
+  const { settings } = useUserStore();
   useAdKeywordsSocketListener(videoId);
 
-  const buttonLabel = isChannelChanged
-    ? SETTING_TITLES[SETTING_TYPES.RETURN_CHANNEL]
-    : SETTING_TITLES[SETTING_TYPES.AD_DETECT];
+  const { name, logoUrl } = selectedChannel;
 
   const settingType = isChannelChanged
     ? SETTING_TYPES.RETURN_CHANNEL
     : SETTING_TYPES.AD_DETECT;
 
-  const { settings } = useUserStore();
-
+  const buttonLabel = SETTING_TITLES[settingType];
   const updateSetting = useUpdateSetting(settingType);
 
   const handleToggle = () => {
