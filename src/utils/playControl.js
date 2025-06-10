@@ -25,16 +25,12 @@ export const startStreamingPlay = (video, url) => {
   }
 };
 
-export const controlStreamingPlayback = async (
-  video,
-  channelId,
-  isPlaying,
-  isAdDetect
-) => {
+export const controlStreamingPlayback = async (video, channelId, isPlaying) => {
   if (!isPlaying) {
     try {
-      const { data } = await getChannelInfo(channelId, isAdDetect, userId);
-      startStreamingPlay(video, data.url);
+      const { data } = await getChannelInfo(channelId, userId);
+      const streamingUrl = data.url;
+      startStreamingPlay(video, streamingUrl);
     } catch (error) {
       console.error("fetch channelInfo failed", error);
     }
