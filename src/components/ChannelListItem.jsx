@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import BlankStarIcon from "@/assets/svgs/icon-blank-star.svg?react";
 import useChannelNavigation from "@/hooks/useChannelNavigation";
 import useToggleFavorite from "@/hooks/useToggleFavorite";
@@ -10,6 +12,18 @@ const ChannelListItem = ({
 }) => {
   const goToChannelPlayer = useChannelNavigation();
   const toggleFavorite = useToggleFavorite();
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  const handleFavoriteClick = async (e) => {
+    e.stopPropagation();
+    if (isProcessing) {
+      return;
+    }
+
+    setIsProcessing(true);
+    await toggleFavorite(channelId);
+    setIsProcessing(false);
+  };
 
   return (
     <li
@@ -22,12 +36,7 @@ const ChannelListItem = ({
         alt={`${channelName} 썸네일`}
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          toggleFavorite(channelId);
-        }}
-      >
+      <button onClick={handleFavoriteClick} disabled={isProcessing}>
         <BlankStarIcon className="ml-3" />
       </button>
     </li>

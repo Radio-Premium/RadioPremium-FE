@@ -1,5 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { useState } from "react";
 
 import DragDropIcon from "@/assets/svgs/icon-drag-drop.svg?react";
 import FilledStarIcon from "@/assets/svgs/icon-filled-star.svg?react";
@@ -18,10 +19,22 @@ const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
   } = useSortable({ id: channelId });
   const goToChannelPlayer = useChannelNavigation();
   const toggleFavorite = useToggleFavorite();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+  };
+
+  const handleUnfavoriteClick = async (e) => {
+    e.stopPropagation();
+    if (isProcessing) {
+      return;
+    }
+
+    setIsProcessing(true);
+    await toggleFavorite(channelId);
+    setIsProcessing(false);
   };
 
   return (
@@ -41,12 +54,7 @@ const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
         {channelName}
       </p>
       <div className="flex flex-1 justify-end pr-2">
-        <button
-          onClick={(e) => {
-            e.stopPropagation();
-            toggleFavorite(channelId);
-          }}
-        >
+        <button onClick={handleUnfavoriteClick}>
           <FilledStarIcon className="mr-1 mb-0.5 ml-2" />
         </button>
         <button
