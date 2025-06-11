@@ -8,6 +8,7 @@ import { useUserStore } from "@/store/useUserStore";
 
 const useChannelSwitch = (videoRef) => {
   const prevChannelId = useChannelStore((state) => state.prevChannelId);
+  const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
   const setPrevChannelId = useChannelStore((state) => state.setPrevChannelId);
   const controlStreamingSwitch = useControlStreamingSwitch();
   const { settings } = useUserStore();
@@ -21,7 +22,7 @@ const useChannelSwitch = (videoRef) => {
           try {
             const { data } = await getRandomNoAdChannel();
             channelId = data.id;
-            setPrevChannelId(channelId);
+            setPrevChannelId(selectedChannelId);
           } catch (error) {
             console.error("fetch randomNoAdchannel failed", error);
           }
@@ -41,6 +42,7 @@ const useChannelSwitch = (videoRef) => {
     },
     [
       prevChannelId,
+      selectedChannelId,
       setPrevChannelId,
       isAdDetect,
       videoRef,
