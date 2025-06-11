@@ -2,6 +2,7 @@ import axios from "axios";
 import Hls from "hls.js";
 
 import { getChannelInfo } from "@/apis/radioChannels";
+import { stopWhisperServer } from "@/utils/stopWhisperServer";
 
 const userId = localStorage.getItem("userId");
 let hlsInstance = null;
@@ -49,14 +50,5 @@ export const controlStreamingPlayback = async (
   } else {
     video.pause();
     stopWhisperServer(userId);
-  }
-};
-
-const stopWhisperServer = async (userId) => {
-  try {
-    // 추후 배포 시 변경
-    await axios.post("http://localhost:5000/stop", { userId });
-  } catch (error) {
-    console.error("❌ Whisper 종료 실패", error);
   }
 };

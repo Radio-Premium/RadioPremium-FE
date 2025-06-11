@@ -4,6 +4,7 @@ import PlayIcon from "@/assets/svgs/icon-mini-play.svg?react";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
 import { usePlayingStore } from "@/store/usePlayingStore";
+import { stopWhisperServer } from "@/utils/stopWhisperServer";
 import { getGlobalVideo } from "@/utils/videoElement";
 
 const MiniPlayer = () => {
@@ -19,6 +20,9 @@ const MiniPlayer = () => {
     video.src = "";
     setIsPlaying(false);
     closeMiniPlayer();
+
+    const userId = localStorage.getItem("userId");
+    stopWhisperServer(userId);
   };
 
   return (
