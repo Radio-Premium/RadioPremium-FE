@@ -6,8 +6,13 @@ import {
   SETTING_EXPLANATIONS,
 } from "@/constants/settingOptions";
 
+import useUserProfile from "../hooks/useUserProfile";
+
 const Settings = () => {
   const settingTypes = Object.values(SETTING_TYPES);
+
+  const userId = localStorage.getItem("userId");
+  useUserProfile(userId);
 
   return (
     <>
