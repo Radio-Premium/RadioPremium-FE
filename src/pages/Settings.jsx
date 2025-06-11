@@ -5,8 +5,7 @@ import {
   SETTING_TITLES,
   SETTING_EXPLANATIONS,
 } from "@/constants/settingOptions";
-
-import useUserProfile from "../hooks/useUserProfile";
+import useUserProfile from "@/hooks/useUserProfile";
 
 const Settings = () => {
   const settingTypes = Object.values(SETTING_TYPES);
