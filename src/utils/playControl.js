@@ -37,7 +37,8 @@ export const controlStreamingPlayback = async (
       const { data } = await getChannelInfo(channelId, userId);
       const streamingUrl = data.url;
       if (isAdDetect) {
-        await axios.post("http://localhost:3000/whisper", {
+        const backendServerURL = import.meta.env.VITE_BACKEND_API_URL;
+        await axios.post(`${backendServerURL}`, {
           streamingUrl,
           userId,
           channelId,
