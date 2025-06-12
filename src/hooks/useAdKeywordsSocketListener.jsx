@@ -6,16 +6,16 @@ import socket from "@/sockets/socketClient";
 
 const useAdKeywordsSocketListener = () => {
   const handleChannelSwitch = useChannelSwitch();
-  const userId = useUserId();
+  const userId = Number(useUserId());
 
   useEffect(() => {
-    if (!userId) {
+    if (Number.isNaN(userId)) {
       return;
     }
 
     const handleConnect = () => {
       console.log("connected");
-      socket.emit("registerUser", { userId });
+      socket.emit("registerUser", { userId: String(userId) });
     };
 
     const handleRadioText = ({ isAd }) => {
@@ -26,13 +26,13 @@ const useAdKeywordsSocketListener = () => {
       console.log("disconnected");
     };
 
-    socket.on("connect", handleConnect);
-    socket.on("radioText", handleRadioText);
-    socket.on("disconnect", handleDisconnect);
-
     if (socket.connected) {
       handleConnect();
     }
+
+    socket.on("connect", handleConnect);
+    socket.on("radioText", handleRadioText);
+    socket.on("disconnect", handleDisconnect);
 
     return () => {
       socket.off("connect", handleConnect);

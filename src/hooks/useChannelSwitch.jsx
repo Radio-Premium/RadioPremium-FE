@@ -1,10 +1,8 @@
 import { useCallback } from "react";
 
 import { getRandomNoAdChannel } from "@/apis/radioChannels";
-import { SETTING_TYPES } from "@/constants/settingOptions";
 import useControlStreamingSwitch from "@/hooks/useControlStreamingSwitch";
 import { useChannelStore } from "@/store/useChannelStore";
-import { useUserStore } from "@/store/useUserStore";
 import { useVideoElementStore } from "@/store/useVideoElementStore";
 
 const useChannelSwitch = () => {
@@ -16,8 +14,6 @@ const useChannelSwitch = () => {
   );
   const setPrevChannelId = useChannelStore((state) => state.setPrevChannelId);
   const controlStreamingSwitch = useControlStreamingSwitch();
-  const { settings } = useUserStore();
-  const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
   const handleChannelSwitch = useCallback(
     async (isAd) => {
@@ -42,7 +38,7 @@ const useChannelSwitch = () => {
           setPrevChannelId(null);
         }
 
-        await controlStreamingSwitch(videoElement, channelId, isAdDetect);
+        await controlStreamingSwitch(videoElement, channelId);
       } catch (error) {
         console.error("switch failed: ", error);
       }
@@ -52,7 +48,6 @@ const useChannelSwitch = () => {
       selectedChannelId,
       setIsChannelChanged,
       setPrevChannelId,
-      isAdDetect,
       videoElement,
       controlStreamingSwitch,
     ]
