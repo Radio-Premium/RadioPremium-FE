@@ -33,8 +33,11 @@ const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
     }
 
     setIsProcessing(true);
-    await toggleFavorite(channelId);
-    setIsProcessing(false);
+    try {
+      await toggleFavorite(channelId);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
