@@ -1,5 +1,6 @@
 import axios from "axios";
 
+import { BACKEND_API_URL } from "@/constants/env";
 import { SETTING_TYPES } from "@/constants/settingOptions";
 import { useUserStore } from "@/store/useUserStore";
 
@@ -23,7 +24,7 @@ const useUpdateSetting = (type) => {
 
     try {
       await axios.put(
-        `${import.meta.env.VITE_BACKEND_API_URL}/users/${userId}/settings`,
+        `${BACKEND_API_URL}/users/${userId}/settings`,
         updatedSettings
       );
       setUserSettings(updatedSettings);

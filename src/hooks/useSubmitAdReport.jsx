@@ -1,17 +1,16 @@
 import axios from "axios";
 
+import { BACKEND_API_URL } from "@/constants/env";
+
 const useSubmitAdReport = () => {
   const reportAd = async ({ userId, isAd, detectedAdPhrase, channelId }) => {
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_BACKEND_API_URL}/reports`,
-        {
-          userId,
-          isAd,
-          detectedAdPhrase,
-          channelId,
-        }
-      );
+      const { data } = await axios.post(`${BACKEND_API_URL}/reports`, {
+        userId,
+        isAd,
+        detectedAdPhrase,
+        channelId,
+      });
 
       return data;
     } catch (error) {
