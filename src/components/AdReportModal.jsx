@@ -20,13 +20,14 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
 
   const availableReportOptions = Object.entries(AD_REPORT_OPTIONS).filter(
     ([key]) => {
-      if (!isChannelChanged) {
+      if (isChannelChanged) {
         return true;
       }
 
       return key === AD_REPORT_TYPES.AD;
     }
   );
+
   const toggleParentOption = (option) => {
     setSelectedParentOption((prev) => (prev === option ? null : option));
   };
