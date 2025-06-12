@@ -28,7 +28,6 @@ const MainLayout = () => {
         </main>
         <video
           ref={videoRef}
-          id="global-radio"
           className="hidden"
           playsInline
           autoPlay
