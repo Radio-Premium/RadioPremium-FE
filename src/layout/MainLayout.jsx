@@ -1,11 +1,23 @@
+import { useEffect, useRef } from "react";
 import { Outlet } from "react-router-dom";
 
 import Header from "@/components/header";
 import MiniPlayer from "@/components/MiniPlayer";
 import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
+import { useVideoElementStore } from "@/store/useVideoElementStore";
 
 const MainLayout = () => {
+  const videoRef = useRef(null);
   const isVisible = useMiniPlayerStore((state) => state.isVisible);
+  const setVideoElement = useVideoElementStore(
+    (state) => state.setVideoElement
+  );
+
+  useEffect(() => {
+    if (videoRef.current) {
+      setVideoElement(videoRef.current);
+    }
+  }, []);
 
   return (
     <div className="flex justify-center bg-purple-50">
@@ -15,6 +27,7 @@ const MainLayout = () => {
           <Outlet />
         </main>
         <video
+          ref={videoRef}
           id="global-radio"
           className="hidden"
           playsInline
