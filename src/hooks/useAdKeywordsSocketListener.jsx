@@ -4,8 +4,8 @@ import useChannelSwitch from "@/hooks/useChannelSwitch";
 import useUserId from "@/hooks/useUserId";
 import socket from "@/sockets/socketClient";
 
-const useAdKeywordsSocketListener = (videoId) => {
-  const handleChannelSwitch = useChannelSwitch(videoId);
+const useAdKeywordsSocketListener = () => {
+  const handleChannelSwitch = useChannelSwitch();
   const userId = useUserId();
 
   useEffect(() => {

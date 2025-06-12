@@ -5,8 +5,10 @@ import { SETTING_TYPES } from "@/constants/settingOptions";
 import useControlStreamingSwitch from "@/hooks/useControlStreamingSwitch";
 import { useChannelStore } from "@/store/useChannelStore";
 import { useUserStore } from "@/store/useUserStore";
+import { useVideoElementStore } from "@/store/useVideoElementStore";
 
-const useChannelSwitch = (videoRef) => {
+const useChannelSwitch = () => {
+  const videoElement = useVideoElementStore((state) => state.videoElement);
   const prevChannelId = useChannelStore((state) => state.prevChannelId);
   const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
   const setIsChannelChanged = useChannelStore(
@@ -40,7 +42,7 @@ const useChannelSwitch = (videoRef) => {
           setPrevChannelId(null);
         }
 
-        await controlStreamingSwitch(videoRef, channelId, isAdDetect);
+        await controlStreamingSwitch(videoElement, channelId, isAdDetect);
       } catch (error) {
         console.error("switch failed: ", error);
       }
@@ -51,7 +53,7 @@ const useChannelSwitch = (videoRef) => {
       setIsChannelChanged,
       setPrevChannelId,
       isAdDetect,
-      videoRef,
+      videoElement,
       controlStreamingSwitch,
     ]
   );
