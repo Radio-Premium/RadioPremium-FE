@@ -14,7 +14,7 @@ const useUserProfile = (userId) => {
     const initUserProfile = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/users/${userId}`
+          `${import.meta.env.VITE_BACKEND_API_URL}/users/${userId}`
         );
         const { isAdDetect, isReturnChannel } = response.data;
         setUserSettings({ isAdDetect, isReturnChannel });

@@ -16,7 +16,7 @@ const useInterestChannels = (userId) => {
     const getInterestIds = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/users/${userId}/interest-channels`
+          `${import.meta.env.VITE_BACKEND_API_URL}/users/${userId}/interest-channels`
         );
         const ids = data.map((item) => item.channelId);
         setInterestChannelIds(ids);

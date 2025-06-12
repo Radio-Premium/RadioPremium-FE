@@ -12,7 +12,7 @@ const useUserId = () => {
         try {
           const {
             data: { userId },
-          } = await axios.post(`${import.meta.env.VITE_API_URL}/users`);
+          } = await axios.post(`${import.meta.env.VITE_BACKEND_API_URL}/users`);
           localStorage.setItem("userId", userId);
         } catch (error) {
           console.error("fetch userId failed: ", error);

@@ -4,7 +4,7 @@ const useSubmitAdReport = () => {
   const reportAd = async ({ userId, isAd, detectedAdPhrase, channelId }) => {
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/reports`,
+        `${import.meta.env.VITE_BACKEND_API_URL}/reports`,
         {
           userId,
           isAd,

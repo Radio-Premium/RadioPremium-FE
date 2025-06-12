@@ -14,7 +14,7 @@ const useChannels = () => {
     const initChannels = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/radio-channels`
+          `${import.meta.env.VITE_BACKEND_API_URL}/radio-channels`
         );
         setRadioChannelList(data);
       } catch (error) {

@@ -23,7 +23,7 @@ const useUpdateSetting = (type) => {
 
     try {
       await axios.put(
-        `${import.meta.env.VITE_API_URL}/users/${userId}/settings`,
+        `${import.meta.env.VITE_BACKEND_API_URL}/users/${userId}/settings`,
         updatedSettings
       );
       setUserSettings(updatedSettings);
