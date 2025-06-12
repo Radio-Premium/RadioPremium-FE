@@ -3,6 +3,7 @@ import { useRef } from "react";
 import CloseIcon from "@/assets/svgs/icon-close.svg?react";
 import PauseIcon from "@/assets/svgs/icon-mini-pause.svg?react";
 import PlayIcon from "@/assets/svgs/icon-mini-play.svg?react";
+import Button from "@/components/ui/Button";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
 import { usePlayingStore } from "@/store/usePlayingStore";
@@ -48,15 +49,16 @@ const MiniPlayer = () => {
         <p className="ml-2 text-sm font-black">{name}</p>
       </div>
       <div className="flex items-center gap-3">
-        {!isPlaying ? (
-          <PlayIcon
-            className="h-9 w-9 cursor-pointer"
-            onClick={handlePlayPauseOnce}
-          />
-        ) : (
-          <PauseIcon className="cursor-pointer" onClick={handlePlayPauseOnce} />
-        )}
-        <CloseIcon className="cursor-pointer" onClick={handleClose} />
+        <Button onClick={handlePlayPauseOnce}>
+          {!isPlaying ? (
+            <PlayIcon className="h-9 w-9 cursor-pointer" />
+          ) : (
+            <PauseIcon className="cursor-pointer" />
+          )}
+        </Button>
+        <Button onClick={handleClose}>
+          <CloseIcon className="cursor-pointer" />
+        </Button>
       </div>
     </div>
   );
