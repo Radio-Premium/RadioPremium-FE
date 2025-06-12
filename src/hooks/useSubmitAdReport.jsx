@@ -12,6 +12,7 @@ const useSubmitAdReport = () => {
           channelId,
         }
       );
+
       return data;
     } catch (error) {
       console.error("fetch ad report failed:", error);
