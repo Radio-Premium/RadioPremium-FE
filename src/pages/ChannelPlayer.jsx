@@ -3,18 +3,16 @@ import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
 import ToggleButton from "@/components/ui/ToggleButton";
 import { SETTING_TITLES, SETTING_TYPES } from "@/constants/settingOptions";
-import useAdKeywordsSocketListener from "@/hooks/useAdKeywordsSocketListener";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
 import { useChannelStore } from "@/store/useChannelStore";
 import { useUserStore } from "@/store/useUserStore";
 
 const ChannelPlayer = () => {
-  const { videoId, selectedChannel, isPlaying, handlePlayPause } =
+  const { selectedChannel, isPlaying, handlePlayPause } =
     useChannelPlayback("full");
   const isChannelChanged = useChannelStore((state) => state.isChannelChanged);
   const { settings } = useUserStore();
-  useAdKeywordsSocketListener(videoId);
 
   const { name, logoUrl } = selectedChannel;
 

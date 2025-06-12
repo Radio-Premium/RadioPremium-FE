@@ -12,11 +12,11 @@ const useControlStreamingSwitch = () => {
     setPlayingChannelId(channelId);
   };
 
-  const controlStreamingSwitch = async (video, channelId) => {
+  const controlStreamingSwitch = async (videoElement, channelId) => {
     const userId = localStorage.getItem("userId");
     try {
       const { data } = await getChannelInfo(channelId, userId);
-      startStreamingPlay(video, data.url);
+      startStreamingPlay(videoElement, data.url);
       updateChannelState(channelId);
     } catch (error) {
       console.error("fetch channelInfo failed", error);
