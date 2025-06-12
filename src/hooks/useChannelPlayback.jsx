@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import { SETTING_TYPES } from "@/constants/settingOptions";
 import { useChannelStore } from "@/store/useChannelStore";
 import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
@@ -11,6 +13,9 @@ const useChannelPlayback = (mode) => {
   const { playingChannelId, openMiniPlayer } = useMiniPlayerStore();
   const { isPlaying, setIsPlaying } = usePlayingStore();
   const { settings } = useUserStore();
+
+  const isProcessing = useRef(false);
+
   const video = getGlobalVideo();
   const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
@@ -36,11 +41,24 @@ const useChannelPlayback = (mode) => {
     }
   };
 
+  const handlePlayPauseOnce = async () => {
+    if (isProcessing.current) {
+      return;
+    }
+
+    isProcessing.current = true;
+    try {
+      await handlePlayPause();
+    } finally {
+      isProcessing.current = false;
+    }
+  };
+
   return {
     videoId: video,
     selectedChannel,
     isPlaying: isCurrentPlaying,
-    handlePlayPause,
+    handlePlayPause: handlePlayPauseOnce,
   };
 };
 

@@ -1,5 +1,3 @@
-import { useRef } from "react";
-
 import MainPauseIcon from "@/assets/svgs/icon-main-pause.svg?react";
 import MainPlayIcon from "@/assets/svgs/icon-main-play.svg?react";
 import Button from "@/components/ui/Button";
@@ -27,22 +25,8 @@ const ChannelPlayer = () => {
   const buttonLabel = SETTING_TITLES[settingType];
   const updateSetting = useUpdateSetting(settingType);
 
-  const isProcessing = useRef(false);
-
   const handleToggle = () => {
     updateSetting();
-  };
-
-  const handlePlayPauseOnce = async () => {
-    if (isProcessing.current) {
-      return;
-    }
-
-    isProcessing.current = true;
-
-    await handlePlayPause();
-
-    isProcessing.current = false;
   };
 
   return (
@@ -64,7 +48,7 @@ const ChannelPlayer = () => {
             onToggle={handleToggle}
           />
         </div>
-        <Button className="mt-12" onClick={handlePlayPauseOnce}>
+        <Button className="mt-12" onClick={handlePlayPause}>
           {isPlaying ? (
             <MainPauseIcon className="h-[60px] w-[60px] sm:h-[75px] sm:w-[75px]" />
           ) : (
