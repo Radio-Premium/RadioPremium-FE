@@ -17,7 +17,7 @@ const MainLayout = () => {
     if (videoRef.current) {
       setVideoElement(videoRef.current);
     }
-  }, []);
+  }, [setVideoElement]);
 
   return (
     <div className="flex justify-center bg-purple-50">
