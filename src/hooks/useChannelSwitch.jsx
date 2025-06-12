@@ -1,18 +1,19 @@
 import { useCallback } from "react";
 
 import { getRandomNoAdChannel } from "@/apis/radioChannels";
-import { SETTING_TYPES } from "@/constants/settingOptions";
 import useControlStreamingSwitch from "@/hooks/useControlStreamingSwitch";
 import { useChannelStore } from "@/store/useChannelStore";
-import { useUserStore } from "@/store/useUserStore";
+import { useVideoElementStore } from "@/store/useVideoElementStore";
 
-const useChannelSwitch = (videoRef) => {
+const useChannelSwitch = () => {
+  const videoElement = useVideoElementStore((state) => state.videoElement);
   const prevChannelId = useChannelStore((state) => state.prevChannelId);
   const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
+  const setIsChannelChanged = useChannelStore(
+    (state) => state.setIsChannelChanged
+  );
   const setPrevChannelId = useChannelStore((state) => state.setPrevChannelId);
   const controlStreamingSwitch = useControlStreamingSwitch();
-  const { settings } = useUserStore();
-  const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
   const handleChannelSwitch = useCallback(
     async (isAd) => {
@@ -22,6 +23,7 @@ const useChannelSwitch = (videoRef) => {
           try {
             const { data } = await getRandomNoAdChannel();
             channelId = data.id;
+            setIsChannelChanged(true);
             setPrevChannelId(selectedChannelId);
           } catch (error) {
             console.error("fetch randomNoAdchannel failed", error);
@@ -32,10 +34,11 @@ const useChannelSwitch = (videoRef) => {
           }
 
           channelId = prevChannelId;
+          setIsChannelChanged(false);
           setPrevChannelId(null);
         }
 
-        await controlStreamingSwitch(videoRef, channelId, isAdDetect);
+        await controlStreamingSwitch(videoElement, channelId);
       } catch (error) {
         console.error("switch failed: ", error);
       }
@@ -43,9 +46,9 @@ const useChannelSwitch = (videoRef) => {
     [
       prevChannelId,
       selectedChannelId,
+      setIsChannelChanged,
       setPrevChannelId,
-      isAdDetect,
-      videoRef,
+      videoElement,
       controlStreamingSwitch,
     ]
   );

@@ -5,10 +5,11 @@ import { useChannelStore } from "@/store/useChannelStore";
 import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
 import { usePlayingStore } from "@/store/usePlayingStore";
 import { useUserStore } from "@/store/useUserStore";
+import { useVideoElementStore } from "@/store/useVideoElementStore";
 import { controlStreamingPlayback } from "@/utils/playControl";
-import { getGlobalVideo } from "@/utils/videoElement";
 
 const useChannelPlayback = (mode) => {
+  const videoElement = useVideoElementStore((state) => state.videoElement);
   const { selectedChannelId, radioChannelList } = useChannelStore();
   const { playingChannelId, openMiniPlayer } = useMiniPlayerStore();
   const { isPlaying, setIsPlaying } = usePlayingStore();
@@ -16,7 +17,6 @@ const useChannelPlayback = (mode) => {
 
   const isProcessing = useRef(false);
 
-  const video = getGlobalVideo();
   const isAdDetect = settings[SETTING_TYPES.AD_DETECT];
 
   const isMiniMode = mode === "mini";
@@ -32,11 +32,11 @@ const useChannelPlayback = (mode) => {
 
   const handlePlayPause = async () => {
     if (!isCurrentPlaying) {
-      await controlStreamingPlayback(video, targetChannelId, false, isAdDetect);
+      await controlStreamingPlayback(videoElement, targetChannelId, false, isAdDetect);
       openMiniPlayer(targetChannelId);
       setIsPlaying(true);
     } else {
-      await controlStreamingPlayback(video, targetChannelId, true, isAdDetect);
+      await controlStreamingPlayback(videoElement, targetChannelId, true, isAdDetect);
       setIsPlaying(false);
     }
   };
@@ -55,7 +55,6 @@ const useChannelPlayback = (mode) => {
   };
 
   return {
-    videoId: video,
     selectedChannel,
     isPlaying: isCurrentPlaying,
     handlePlayPause: handlePlayPauseOnce,

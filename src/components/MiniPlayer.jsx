@@ -5,10 +5,11 @@ import Button from "@/components/ui/Button";
 import useChannelPlayback from "@/hooks/useChannelPlayback";
 import { useMiniPlayerStore } from "@/store/useMiniPlayerStore";
 import { usePlayingStore } from "@/store/usePlayingStore";
+import { useVideoElementStore } from "@/store/useVideoElementStore";
 import { stopWhisperServer } from "@/utils/stopWhisperServer";
-import { getGlobalVideo } from "@/utils/videoElement";
 
 const MiniPlayer = () => {
+  const videoElement = useVideoElementStore((state) => state.videoElement);
   const { selectedChannel, isPlaying, handlePlayPause } =
     useChannelPlayback("mini");
   const { closeMiniPlayer } = useMiniPlayerStore();
@@ -16,9 +17,8 @@ const MiniPlayer = () => {
   const { name, logoUrl } = selectedChannel;
 
   const handleClose = () => {
-    const video = getGlobalVideo();
-    video.pause();
-    video.src = "";
+    videoElement.pause();
+    videoElement.src = "";
     setIsPlaying(false);
     closeMiniPlayer();
 
