@@ -25,13 +25,13 @@ const useChannelPlayback = (mode) => {
     ? isPlaying && playingChannelId !== null
     : isPlaying && selectedChannelId === playingChannelId;
 
-  const handlePlayPause = () => {
+  const handlePlayPause = async () => {
     if (!isCurrentPlaying) {
-      controlStreamingPlayback(video, targetChannelId, false, isAdDetect);
+      await controlStreamingPlayback(video, targetChannelId, false, isAdDetect);
       openMiniPlayer(targetChannelId);
       setIsPlaying(true);
     } else {
-      controlStreamingPlayback(video, targetChannelId, true, isAdDetect);
+      await controlStreamingPlayback(video, targetChannelId, true, isAdDetect);
       setIsPlaying(false);
     }
   };
