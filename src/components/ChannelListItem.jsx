@@ -14,7 +14,7 @@ const ChannelListItem = ({
   const toggleFavorite = useToggleFavorite();
   const isProcessing = useRef(false);
 
-  const handleFavoriteClick = async (e) => {
+  const handleRegisterFavoriteChannel = async (e) => {
     e.stopPropagation();
     if (isProcessing.current) {
       return;
@@ -39,7 +39,10 @@ const ChannelListItem = ({
         alt={`${channelName} 썸네일`}
       />
       <p className="ml-3 w-3/4 text-sm font-bold">{channelName}</p>
-      <button onClick={handleFavoriteClick} disabled={isProcessing.current}>
+      <button
+        onClick={handleRegisterFavoriteChannel}
+        disabled={isProcessing.current}
+      >
         <BlankStarIcon className="ml-3" />
       </button>
     </li>

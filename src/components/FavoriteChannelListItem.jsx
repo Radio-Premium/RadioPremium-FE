@@ -26,7 +26,7 @@ const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
     transition,
   };
 
-  const handleUnfavoriteClick = async (e) => {
+  const handleCancelFavoriteChannel = async (e) => {
     e.stopPropagation();
     if (isProcessing.current) {
       return;
@@ -57,7 +57,10 @@ const FavoriteChannelListItem = ({ channelId, channelName, thumbnail }) => {
         {channelName}
       </p>
       <div className="flex flex-1 justify-end pr-2">
-        <button onClick={handleUnfavoriteClick} disabled={isProcessing.current}>
+        <button
+          onClick={handleCancelFavoriteChannel}
+          disabled={isProcessing.current}
+        >
           <FilledStarIcon className="mr-1 mb-0.5 ml-2" />
         </button>
         <button
