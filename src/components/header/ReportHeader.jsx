@@ -7,7 +7,8 @@ import AdReportModal from "@/components/AdReportModal";
 import { useChannelStore } from "@/store/useChannelStore";
 
 const ReportHeader = () => {
-  const { isChannelChanged, selectedChannelId } = useChannelStore();
+  const isChannelChanged = useChannelStore((state) => state.isChannelChanged);
+  const selectedChannelId = useChannelStore((state) => state.selectedChannelId);
 
   const navigate = useNavigate();
   const [isAdReportModalOpen, setIsAdReportModalOpen] = useState(false);
