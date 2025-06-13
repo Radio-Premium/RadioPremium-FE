@@ -32,16 +32,28 @@ const useChannelPlayback = (mode) => {
 
   const handlePlayPause = async () => {
     if (!isCurrentPlaying) {
-      await controlStreamingPlayback(videoElement, targetChannelId, false, isAdDetect);
+      await controlStreamingPlayback(
+        videoElement,
+        targetChannelId,
+        false,
+        isAdDetect
+      );
       openMiniPlayer(targetChannelId);
       setIsPlaying(true);
     } else {
-      await controlStreamingPlayback(videoElement, targetChannelId, true, isAdDetect);
+      await controlStreamingPlayback(
+        videoElement,
+        targetChannelId,
+        true,
+        isAdDetect
+      );
       setIsPlaying(false);
     }
   };
 
-  const handlePlayPauseOnce = async () => {
+  const preventDuplicateClick = async (e) => {
+    e.stopPropagation();
+
     if (isProcessing.current) {
       return;
     }
@@ -57,7 +69,7 @@ const useChannelPlayback = (mode) => {
   return {
     selectedChannel,
     isPlaying: isCurrentPlaying,
-    handlePlayPause: handlePlayPauseOnce,
+    handlePlayPause: preventDuplicateClick,
   };
 };
 
