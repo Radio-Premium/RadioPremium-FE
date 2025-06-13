@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 export const useUserStore = create(
   persist(
     (set) => ({
-      setting: {
+      settings: {
         isAdDetect: true,
         isReturnChannel: false,
       },
