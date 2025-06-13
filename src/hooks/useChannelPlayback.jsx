@@ -51,7 +51,7 @@ const useChannelPlayback = (mode) => {
     }
   };
 
-  const handlePlayPauseOnce = async (e) => {
+  const preventDuplicateClick = async (e) => {
     e.stopPropagation();
 
     if (isProcessing.current) {
@@ -69,7 +69,7 @@ const useChannelPlayback = (mode) => {
   return {
     selectedChannel,
     isPlaying: isCurrentPlaying,
-    handlePlayPause: handlePlayPauseOnce,
+    handlePlayPause: preventDuplicateClick,
   };
 };
 
