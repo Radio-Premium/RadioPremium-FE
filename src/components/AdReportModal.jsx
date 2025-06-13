@@ -89,7 +89,7 @@ const AdReportModal = ({ isChannelChanged, channelId, onClose }) => {
               취소
             </Button>
             <Button
-              className="flex h-[35px] w-[75px] items-center justify-center rounded-md bg-[#5B4DFF] px-4 py-2 text-[16px] text-white hover:bg-[#4F46E5]"
+              className="flex h-[35px] w-[75px] items-center justify-center rounded-md bg-[#5B4DFF] px-4 py-2 text-[16px] text-white hover:bg-[#4F46E5] disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-500"
               onClick={handleSubmit}
               disabled={!selectedParentOption || !selectedChildOption}
             >
