@@ -8,7 +8,7 @@ const AdRedirectChannelItem = ({
   isSelected,
   onSelect,
 }) => {
-  const borderColor = isSelected ? "border-[#5b4dff]" : "border-[#e0dfdf]";
+  const borderColor = isSelected ? "border-indigo-500" : "border-gray-200";
 
   return (
     <li
