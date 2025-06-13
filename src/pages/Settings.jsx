@@ -93,8 +93,6 @@ const Settings = () => {
             />
           ))}
         </ChannelSection>
-        <h2 className="text-lg font-semibold"></h2>
-        <ul></ul>
       </div>
     </>
   );
