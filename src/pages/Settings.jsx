@@ -9,10 +9,12 @@ import {
   SETTING_TITLES,
   SETTING_EXPLANATIONS,
 } from "@/constants/settingOptions";
+import { useUserStore } from "@/store/useUserStore";
 
 const Settings = () => {
   const [selectedRedirectChannelId, setSelectedRedirectChannelId] =
     useState(null);
+  const isAdDetect = useUserStore((state) => state.settings.isAdDetect);
   const settingTypes = Object.values(SETTING_TYPES);
 
   const handleSelectRedirectChannel = (channelId) => {
@@ -69,28 +71,30 @@ const Settings = () => {
           ))}
         </ul>
       </div>
-      <div className="px-4 pt-2">
-        <ChannelSection
-          title="광고 감지 시 이동할 채널"
-          subTitleList={[
-            "광고가 감지되면 자동으로 전환할 채널을 선택해 주세요.",
-            "지정한 채널로 광고 중 자동 이동됩니다.",
-          ]}
-          marginTop="mt-2"
-          height="h-80"
-        >
-          {adRedirectChannelList.map(({ id, name, logoUrl }) => (
-            <AdRedirectChannelItem
-              key={id}
-              channelId={id}
-              channelName={name}
-              thumbnail={logoUrl}
-              isSelected={selectedRedirectChannelId === id}
-              onSelect={handleSelectRedirectChannel}
-            />
-          ))}
-        </ChannelSection>
-      </div>
+      {isAdDetect && (
+        <div className="px-4 pt-2">
+          <ChannelSection
+            title="광고 감지 시 이동할 채널"
+            subTitleList={[
+              "광고가 감지되면 자동으로 전환할 채널을 선택해 주세요.",
+              "지정한 채널로 광고 중 자동 이동됩니다.",
+            ]}
+            marginTop="mt-2"
+            height="h-80"
+          >
+            {adRedirectChannelList.map(({ id, name, logoUrl }) => (
+              <AdRedirectChannelItem
+                key={id}
+                channelId={id}
+                channelName={name}
+                thumbnail={logoUrl}
+                isSelected={selectedRedirectChannelId === id}
+                onSelect={handleSelectRedirectChannel}
+              />
+            ))}
+          </ChannelSection>
+        </div>
+      )}
     </>
   );
 };
