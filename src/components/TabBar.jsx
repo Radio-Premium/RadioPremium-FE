@@ -5,8 +5,8 @@ const TabBar = () => {
   const location = useLocation();
 
   const tabItems = [
-    { label: "Home", path: "/" },
-    { label: "Setting", path: "/settings" },
+    { label: "홈", path: "/" },
+    { label: "설정", path: "/settings" },
   ];
 
   return (
