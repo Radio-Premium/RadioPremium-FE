@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+import { BACKEND_API_URL } from "@/constants/env";
+
 const useUserId = () => {
   const [userId, setUserId] = useState(null);
 
@@ -12,7 +14,7 @@ const useUserId = () => {
         try {
           const {
             data: { userId },
-          } = await axios.post(`${import.meta.env.VITE_API_URL}/users`);
+          } = await axios.post(`${BACKEND_API_URL}/users`);
           localStorage.setItem("userId", userId);
         } catch (error) {
           console.error("fetch userId failed: ", error);

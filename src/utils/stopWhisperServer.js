@@ -1,9 +1,10 @@
 import axios from "axios";
 
+import { WHISPER_API_URL } from "@/constants/env";
+
 export const stopWhisperServer = async (userId) => {
   try {
-    // 추후 배포 시 변경
-    await axios.post("http://localhost:5000/stop", { userId });
+    await axios.post(`${WHISPER_API_URL}/stop`, { userId });
   } catch (error) {
     console.error("❌ Whisper 종료 실패", error);
   }

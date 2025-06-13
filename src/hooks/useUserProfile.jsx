@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 
+import { BACKEND_API_URL } from "@/constants/env";
 import { useUserStore } from "@/store/useUserStore";
 
 const useUserProfile = (userId) => {
@@ -13,9 +14,7 @@ const useUserProfile = (userId) => {
 
     const initUserProfile = async () => {
       try {
-        const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/users/${userId}`
-        );
+        const response = await axios.get(`${BACKEND_API_URL}/users/${userId}`);
         const { isAdDetect, isReturnChannel } = response.data;
         setUserSettings({ isAdDetect, isReturnChannel });
       } catch (error) {
