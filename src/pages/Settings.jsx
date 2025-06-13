@@ -16,12 +16,9 @@ const Settings = () => {
   const settingTypes = Object.values(SETTING_TYPES);
 
   const handleSelectRedirectChannel = (channelId) => {
-    if (channelId === selectedRedirectChannelId) {
-      setSelectedRedirectChannelId(null);
-      return;
-    }
-
-    setSelectedRedirectChannelId(channelId);
+    setSelectedRedirectChannelId((prevId) =>
+      prevId === channelId ? null : channelId
+    );
     // TODO: 동적 구현 시 update api 연결
   };
 
