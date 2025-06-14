@@ -7,10 +7,16 @@ export const useUserStore = create(
       settings: {
         isAdDetect: true,
         isReturnChannel: false,
+        adRedirectChannelId: null,
       },
 
-      setUserSettings: ({ isAdDetect, isReturnChannel }) =>
-        set({ settings: { isAdDetect, isReturnChannel } }),
+      setUserSettings: (updatedSettings) =>
+        set((state) => ({
+          settings: {
+            ...state.settings,
+            ...updatedSettings,
+          },
+        })),
     }),
     {
       name: "user-settings",

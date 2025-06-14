@@ -7,19 +7,21 @@ import { useUserStore } from "@/store/useUserStore";
 const useUpdateSetting = (type) => {
   const { settings, setUserSettings } = useUserStore();
 
-  const updateSetting = async () => {
+  const updateSetting = async (value) => {
     const userId = localStorage.getItem("userId");
     if (!userId) {
       return;
     }
 
+    const isToggleType = type !== SETTING_TYPES.AD_REDIRECT_CHANNEL;
+    const toggledValue = isToggleType ? !settings[type] : value;
+
     const updatedSettings = {
-      ...settings,
-      [type]: !settings[type],
+      [type]: toggledValue,
     };
 
-    if (type === SETTING_TYPES.AD_DETECT && !updatedSettings.isAdDetect) {
-      updatedSettings.isReturnChannel = false;
+    if (type === SETTING_TYPES.AD_DETECT && !toggledValue) {
+      updatedSettings[SETTING_TYPES.RETURN_CHANNEL] = false;
     }
 
     try {
