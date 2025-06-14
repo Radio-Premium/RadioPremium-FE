@@ -15,8 +15,9 @@ const useUserProfile = (userId) => {
     const initUserProfile = async () => {
       try {
         const response = await axios.get(`${BACKEND_API_URL}/users/${userId}`);
-        const { isAdDetect, isReturnChannel } = response.data;
-        setUserSettings({ isAdDetect, isReturnChannel });
+        const { isAdDetect, isReturnChannel, adRedirectChannelId } =
+          response.data;
+        setUserSettings({ isAdDetect, isReturnChannel, adRedirectChannelId });
       } catch (error) {
         console.error("fetch user profile failed: ", error);
       }
