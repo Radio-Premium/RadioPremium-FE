@@ -13,18 +13,15 @@ const useUpdateSetting = (type) => {
       return;
     }
 
-    const updatedSettings = { ...settings };
+    const isToggleType = type !== SETTING_TYPES.AD_REDIRECT_CHANNEL;
+    const toggledValue = isToggleType ? !settings[type] : value;
 
-    if (type === SETTING_TYPES.AD_REDIRECT_CHANNEL) {
-      updatedSettings[type] = value;
-    } else {
-      updatedSettings[type] = !settings[type];
-      if (
-        type === SETTING_TYPES.AD_DETECT &&
-        !updatedSettings[SETTING_TYPES.AD_DETECT]
-      ) {
-        updatedSettings[SETTING_TYPES.RETURN_CHANNEL] = false;
-      }
+    const updatedSettings = {
+      [type]: toggledValue,
+    };
+
+    if (type === SETTING_TYPES.AD_DETECT && !toggledValue) {
+      updatedSettings[SETTING_TYPES.RETURN_CHANNEL] = false;
     }
 
     try {
