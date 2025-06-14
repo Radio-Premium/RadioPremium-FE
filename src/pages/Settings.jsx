@@ -8,9 +8,11 @@ import {
   SETTING_EXPLANATIONS,
 } from "@/constants/settingOptions";
 import useUpdateSetting from "@/hooks/useUpdateSetting";
+import { useChannelStore } from "@/store/useChannelStore";
 import { useUserStore } from "@/store/useUserStore";
 
 const Settings = () => {
+  const channelList = useChannelStore((state) => state.radioChannelList);
   const isAdDetect = useUserStore((state) => state.settings.isAdDetect);
   const adRedirectChannelId = useUserStore(
     (state) => state.settings.adRedirectChannelId
@@ -27,37 +29,9 @@ const Settings = () => {
     updateAdRedirectChannelId(updatedChannelId);
   };
 
-  // TODO: 동적 구현 시 임시 데이터 삭제
-  const adRedirectChannelList = [
-    {
-      id: 0,
-      name: "KBS 1라디오",
-      logoUrl:
-        "https://rpvlwzikmpjsvztgkytl.supabase.co/storage/v1/object/public/radio-logos//KBS1Radio.png",
-      isSelected: true,
-    },
-    {
-      id: 3,
-      name: "KBS 1FM",
-      logoUrl:
-        "https://rpvlwzikmpjsvztgkytl.supabase.co/storage/v1/object/public/radio-logos//KBS1FM.png",
-      isSelected: false,
-    },
-    {
-      id: 5,
-      name: "KBS 한민족방송",
-      logoUrl:
-        "https://rpvlwzikmpjsvztgkytl.supabase.co/storage/v1/object/public/radio-logos//KBSHanminjok.png",
-      isSelected: false,
-    },
-    {
-      id: 10,
-      name: "고릴라디오M",
-      logoUrl:
-        "https://rpvlwzikmpjsvztgkytl.supabase.co/storage/v1/object/public/radio-logos//GOREALRADIO.png",
-      isSelected: false,
-    },
-  ];
+  const adRedirectChannelList = channelList
+    .filter((channel) => !channel.isAdChannel)
+    .map(({ id, name, logoUrl }) => ({ id, name, logoUrl, isSelected: false }));
 
   return (
     <>
