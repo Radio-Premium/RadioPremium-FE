@@ -18,7 +18,7 @@ const Settings = () => {
     (state) => state.settings.adRedirectChannelId
   );
   const updateAdRedirectChannelId = useUpdateSetting(
-    SETTING_TYPES.AD_REDIRECT_CHANNEL_ID
+    SETTING_TYPES.AD_REDIRECT_CHANNEL
   );
 
   const settingTypes = Object.values(SETTING_TYPES);
@@ -40,7 +40,7 @@ const Settings = () => {
         <ul>
           {settingTypes.map(
             (type) =>
-              type !== SETTING_TYPES.AD_REDIRECT_CHANNEL_ID && (
+              type !== SETTING_TYPES.AD_REDIRECT_CHANNEL && (
                 <SettingListItem
                   key={type}
                   type={type}
@@ -54,9 +54,9 @@ const Settings = () => {
       {isAdDetect && (
         <div className="px-4 pt-2">
           <ChannelSection
-            title={SETTING_TITLES[SETTING_TYPES.AD_REDIRECT_CHANNEL_ID]}
+            title={SETTING_TITLES[SETTING_TYPES.AD_REDIRECT_CHANNEL]}
             subTitleList={
-              SETTING_EXPLANATIONS[SETTING_TYPES.AD_REDIRECT_CHANNEL_ID]
+              SETTING_EXPLANATIONS[SETTING_TYPES.AD_REDIRECT_CHANNEL]
             }
             marginTop="mt-2"
             height="h-80"

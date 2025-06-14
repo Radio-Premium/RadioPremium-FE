@@ -15,7 +15,7 @@ const useUpdateSetting = (type) => {
 
     const updatedSettings = { ...settings };
 
-    if (type === SETTING_TYPES.AD_REDIRECT_CHANNEL_ID) {
+    if (type === SETTING_TYPES.AD_REDIRECT_CHANNEL) {
       updatedSettings[type] = value;
     } else {
       updatedSettings[type] = !settings[type];
