@@ -15,6 +15,12 @@ jobs:
         with:
           node-version: 22.11.0
           cache: npm
+
+      - name: Create .env.production file
+        run: |
+          echo "VITE_WHISPER_API_URL=${{ secrets.VITE_WHISPER_API_URL }}" >> .env.production
+          echo "VITE_BACKEND_API_URL=${{ secrets.VITE_BACKEND_API_URL }}" >> .env.production
+
       - run: npm install
       - run: npm run build
 
